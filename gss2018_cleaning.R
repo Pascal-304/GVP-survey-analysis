@@ -5,8 +5,8 @@ library(tidyverse)
 readr::read_csv()
 
 # Load the data dictionary and the raw data and correct the variable names
-raw_data <- read_csv("AAuMvfew.csv")
-# dict <- read_lines("gss2018_dict.txt", skip = 18) # skip is because of preamble content
+raw_data <- read_csv("gss2018_data.csv")
+dict <- read_lines("gss2018_dict.txt", skip = 18) # skip is because of preamble content
 # Now we need the labels because these are the actual responses that we need
 labels_raw <- read_file("gss2018_labels.txt")
 
@@ -393,3 +393,15 @@ gss <- gss %>%
 gss <- gss %>% 
   mutate_at(vars(age:reas_giv_being_asked), 
             .funs = funs(ifelse(.=="Valid skip"|.=="Refusal"|.=="Not stated", "NA", .))) 
+
+gss <- gss %>% 
+  mutate(
+    gender =
+           recode(
+             gender,
+             'Male gender' = 'Male',
+             'Female gender' = 'Female'
+           )
+  )
+
+write_csv(gss, "gss2018.csv")
