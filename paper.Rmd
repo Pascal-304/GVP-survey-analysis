@@ -9,4 +9,119 @@ output: pdf_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+```{r library}
+# install.packages('tidyverse')
+library(janitor)
+library(tidyverse)
+
+readr::read_csv()
+library(knitr)
+```
+
+
+
+```{r}
+gss<-read_csv('gss2018.csv')
+```
+
+```{r}
+dg <- gss %>% 
+  as_tibble() %>%
+  select(starts_with('decision_on_giving_'))
+
+dg_tax_cred <-
+  dg %>%
+  group_by(decision_on_giving_tax_cred) %>% 
+  summarise(percent=100*n()/nrow(dg))
+
+dg_decide_in_advance <-
+  dg %>%
+  group_by(decision_on_giving_decide_in_advance) %>%
+  summarise(percent=100*n()/nrow(dg))
+
+dg_pattern_of_giving <-
+  dg %>%
+  group_by(decision_on_giving_pattern_of_giving) %>%
+  summarise(percent=100*n()/nrow(dg))
+
+dg_search <-
+  dg %>%
+  group_by(decision_on_giving_search) %>%
+  summarise(percent=100*n()/nrow(dg))
+
+dg_search_info_from_charity <-
+  dg %>%
+  group_by(decision_on_giving_search_info_from_charity) %>%
+  summarise(percent=100*n()/nrow(dg))
+
+dg_search_contact_charity <-
+  dg %>%
+  group_by(decision_on_giving_search_contact_charity) %>%
+  summarise(percent=100*n()/nrow(dg))
+
+dg_search_consult_CRA_web <-
+  dg %>%
+  group_by(decision_on_giving_search_consult_CRA_web) %>%
+  summarise(percent=100*n()/nrow(dg))
+
+dg_search_consult_web <-
+  dg %>%
+  group_by(decision_on_giving_search_consult_web) %>%
+  summarise(percent=100*n()/nrow(dg))
+
+dg_search_general_online <-
+  dg %>%
+  group_by(decision_on_giving_search_general_online) %>%
+  summarise(percent=100*n()/nrow(dg))
+
+dg_search_ask_someone <-
+  dg %>%
+  group_by(decision_on_giving_search_ask_someone) %>%
+  summarise(percent=100*n()/nrow(dg))
+
+dg_search_consult_other_source <-
+  dg %>%
+  group_by(decision_on_giving_search_consult_other_source) %>%
+  summarise(percent=100*n()/nrow(dg))
+
+dg_search_other_meth <-
+  dg %>%
+  group_by(decision_on_giving_search_other_meth) %>%
+  summarise(percent=100*n()/nrow(dg))
+
+dg_know_how_to_verify <-
+  dg %>%
+  group_by(decision_on_giving_know_how_to_verify) %>%
+  summarise(percent=100*n()/nrow(dg))
+
+dg_org_monitoring <-
+  dg %>%
+  group_by(decision_on_giving_org_monitoring) %>%
+  summarise(percent=100*n()/nrow(dg))
+
+```
+
+
+```{r decision_on_giving}
+# for table
+dg_df<-data.frame('Category'=c(''),
+                  'NA'=c(''),
+                  'No'=c(''),
+                  'Yes'=c(''))
+
+dg_df<-rbind(dg_df, c('Tax Credit', dg_tax_cred$percent))
+dg_df<-rbind(dg_df, c('Decide in Advance', dg_decide_in_advance$percent))
+dg_df<-rbind(dg_df, c('Search', dg_search$percent))
+dg_df<-rbind(dg_df, c('Know how to verify', dg_know_how_to_verify$percent))
+dg_df<-rbind(dg_df, c('Organization Monitoring', dg_org_monitoring$percent))
+
+rownames(dg_df)<-dg_df$Category
+dg_df<-dg_df[-c(1),]
+dg_df<-dg_df[-1]
+
+dg_df %>%
+  kable(caption = "Decision On Giving", booktabs = TRUE, linesep = "")
+```
+
+
 
