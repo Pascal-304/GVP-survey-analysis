@@ -17,9 +17,12 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r library, echo=FALSE, message=FALSE}
 # install.packages('bookdown')
+library(dplyr)
+library(tidyverse) 
 library(janitor)
-library(tidyverse)
+library(ggplot2)
 library(knitr)
+library(kableExtra)
 library(bookdown)
 ```
 
@@ -63,13 +66,13 @@ age %>%
        fill='Gender')
 ```
 
-```{r marital_status, echo=FALSE, fig.cap='Marital Status and Income'}
+```{r maritalstatus, echo=FALSE, fig.cap='Marital Status and Income'}
 age %>%
   ggplot(mapping=aes(x=fam_income_quintile)) +
   geom_bar() +
   theme_minimal() +
   labs(x='', title='Marital Status') +
-  theme(axis.text.x = element_text(angle=30)) +
+  theme(axis.text.x = element_text(angle=15)) +
   facet_wrap(vars(marital_status),
              dir = "v",
              scales = "free")
@@ -77,35 +80,60 @@ age %>%
 
 Marital status is important in tracking the evolution of social attitudes. The combination of the marital status and family income indicates the socio-economic status of various types of families. 
 
-```{r decision_on_giving, echo=FALSE}
+```{r decisionongiving, echo=FALSE, fig.cap='Deicision'}
+
 dg <- gss %>% 
   select(starts_with('decision_on_giving_'))
 
 dg_decide_in_advance <-
   dg %>%
   group_by(decision_on_giving_decide_in_advance) %>%
-  summarise(percent=100*n()/nrow(dg))
+  summarise(percent=100*round(n()/nrow(dg),4))
 
-dg_pattern_of_giving <-
-  dg %>%
-  group_by(decision_on_giving_pattern_of_giving) %>%
-  summarise(percent=100*n()/nrow(dg))
-
-dg_know_how_to_verify <-
-  dg %>%
-  group_by(decision_on_giving_know_how_to_verify) %>%
-  summarise(percent=100*n()/nrow(dg))
-
-dg_org_monitoring <-
-  dg %>%
-  group_by(decision_on_giving_org_monitoring) %>%
-  summarise(percent=100*n()/nrow(dg))
+dg %>%
+  ggplot(aes(x=decision_on_giving_decide_in_advance)) +
+  geom_bar() +
+  theme_minimal()
 
 ```
 
-asdf
+```{r awareness, echo=FALSE, fig.cap="Awareness of the charity organizations"}
+dg_awareness<-
+  dg %>%
+    select(decision_on_giving_know_how_to_verify, decision_on_giving_org_monitoring)
 
-```{r dg_search, echo=FALSE}
+awareness_lst<-c('Know how to verify whether an organization is a registered charity',
+                 'Monitor how charities in Canada use their donations')
+
+df_awareness<-data.frame('Method'=c(''),
+                         'No'=c(''),
+                         'Yes'=c(''),
+                         'NA'=c(''))
+i <- 1
+for (r in colnames(dg_awareness)){
+  counted<-
+    dg_awareness %>%
+    count(.data[[r]]) %>%
+    mutate(proportion = round(n/sum(n),4)*100)
+  
+  df_awareness<-rbind(df_awareness, c(awareness_lst[i], counted$proportion))
+  i<-i+1
+}
+
+df_awareness<-df_awareness[-c(1),]
+
+df_awareness %>% 
+  as_tibble() %>%
+  relocate(Yes, .after=Method) %>%
+  relocate(No, .after=Yes) %>%
+  kable(caption = "Awareness of the charity organizations", format="latex") %>%
+  row_spec(0, bold=TRUE) %>%
+  kable_styling()
+```
+
+
+
+```{r dgsearch, echo=FALSE}
 dg_search <-
   dg %>% 
   mutate(decision_on_giving_search =
@@ -172,7 +200,7 @@ dg_search_df %>%
 
 It shows that people usually 
 
-```{r reasons_for_giving, echo=FALSE}
+```{r reasonsforgiving, echo=FALSE}
 # choose the data who has donated in the past 12 months
 reasons_for_giving <-
   gss %>%
@@ -204,8 +232,9 @@ i <- 1
 for (r in colnames(reasons_for_giving)){
   counted<-
     reasons_for_giving %>%
-    count(.data[[r]])
-  rg<-rbind(rg, c(rg_lst[i], counted$n))
+    count(.data[[r]]) %>%
+    mutate(proportion = round(n/sum(n),4)*100)
+  rg<-rbind(rg, c(rg_lst[i], counted$proportion))
   i<-i+1
 }
 rg<-rg[-c(1),]
@@ -217,7 +246,7 @@ rg %>%
   kable(caption = "Reasons for giving")
 ```
 
-```{r reasons_for_not_giving, echo=FALSE}
+```{r reasonsfornotgiving, echo=FALSE}
 reasons_for_not_giving <-
   gss %>%
     select(starts_with("reas_not_giv")) %>%
@@ -263,11 +292,13 @@ i <- 1
 for (r in colnames(reasons_for_not_giving)){
   counted<-
     reasons_for_not_giving %>%
-    count(.data[[r]])
-  ng<-rbind(ng, c(ng_lst[i], counted$n))
+    count(.data[[r]]) %>%
+    mutate(proportion = round(n/sum(n),4)*100)
+  ng<-rbind(ng, c(ng_lst[i], counted$proportion))
   i<-i+1
 }
 ng<-ng[-c(1),]
+
 ng %>% 
   as_tibble() %>%
   relocate(Yes, .after=Reason) %>%
@@ -275,7 +306,7 @@ ng %>%
   kable(caption = "Reasons for not giving")
 ```
 
-```{r other_giving, echo=FALSE}
+```{r othergiving, echo=FALSE}
 other_giving<-
   gss %>%
   select(starts_with("other_giv_"))
@@ -309,7 +340,7 @@ og<-og[-c(1),]
 
 og %>% 
   as_tibble() %>%
-  relocate(Yes, .after=Reason) %>%
+  relocate(Yes, .after=Other_giving) %>%
   relocate(No, .after=Yes) %>%
   kable(caption = "Other givings")
 ```
