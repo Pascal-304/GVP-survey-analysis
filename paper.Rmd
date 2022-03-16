@@ -74,7 +74,6 @@ age %>%
              dir = "v",
              scales = "free")
 ```
-```
 
 Marital status is important in tracking the evolution of social attitudes. The combination of the marital status and family income indicates the socio-economic status of various types of families. 
 
