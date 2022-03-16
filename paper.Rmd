@@ -1,38 +1,86 @@
 ---
 title: "Output"
-author: "Pascal Lee Slew"
-date: '2022-03-07'
-output: pdf_document
+author: 
+  - Pascal Lee Slew
+  - Yunkyung Park
+date: "`r format(Sys.time(), '%d %B %Y')`"
+abstract: "First sentence. Second sentence. Third sentence. Fourth sentence."
+output:
+  bookdown::pdf_document2
+toc: FALSE
+bibliography: references.bib
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-```{r library}
-# install.packages('tidyverse')
+```{r library, echo=FALSE, message=FALSE}
+# install.packages('bookdown')
 library(janitor)
 library(tidyverse)
-
-readr::read_csv()
 library(knitr)
+library(bookdown)
 ```
 
-
-
-```{r}
-gss<-read_csv('gss2018.csv')
+```{r read_data, echo=FALSE}
+gss<-read_csv('gss2018.csv', show_col_types = FALSE)
 ```
 
-```{r}
+# I. Introduction
+
+This dataset contains core and 
+
+```{r age, echo=FALSE}
+age <-
+  gss %>%
+  mutate(age_group = 
+           case_when(age == "15 to 24 years" ~ "15-24",
+                     age == "25 to 34 years" ~ "25-34",
+                     age == "35 to 44 years" ~ "35-44",
+                     age == "45 to 54 years" ~ "45-54",
+                     age == "55 to 64 years" ~ "55-64",
+                     age == "65 to 74 years" ~ "65-74",
+                     age == "75 years and over" ~ ">=75"
+                     ),
+         age_group = factor(age_group,
+                            levels = c("15-24",
+                                       "25-34",
+                                       "35-44",
+                                       "45-54",
+                                       "55-64",
+                                       "65-74",
+                                       ">=75"
+                                       )
+                            )
+         )
+age %>%
+  ggplot(mapping=aes(x=age_group, fill=gender)) +
+  geom_bar(position = "dodge") +
+  theme_minimal() +
+  labs(x='Age-group of respondent', y='Number of respondents', 
+       title='Distribution of age-groups and gender in the 2018 GSS survey',
+       fill='Gender')
+```
+
+```{r marital_status, echo=FALSE, fig.cap='Marital Status and Income'}
+age %>%
+  ggplot(mapping=aes(x=fam_income_quintile)) +
+  geom_bar() +
+  theme_minimal() +
+  labs(x='', title='Marital Status') +
+  theme(axis.text.x = element_text(angle=30)) +
+  facet_wrap(vars(marital_status),
+             dir = "v",
+             scales = "free")
+```
+```
+
+Marital status is important in tracking the evolution of social attitudes. The combination of the marital status and family income indicates the socio-economic status of various types of families. 
+
+```{r decision_on_giving, echo=FALSE}
 dg <- gss %>% 
-  as_tibble() %>%
   select(starts_with('decision_on_giving_'))
-
-dg_tax_cred <-
-  dg %>%
-  group_by(decision_on_giving_tax_cred) %>% 
-  summarise(percent=100*n()/nrow(dg))
 
 dg_decide_in_advance <-
   dg %>%
@@ -42,51 +90,6 @@ dg_decide_in_advance <-
 dg_pattern_of_giving <-
   dg %>%
   group_by(decision_on_giving_pattern_of_giving) %>%
-  summarise(percent=100*n()/nrow(dg))
-
-dg_search <-
-  dg %>%
-  group_by(decision_on_giving_search) %>%
-  summarise(percent=100*n()/nrow(dg))
-
-dg_search_info_from_charity <-
-  dg %>%
-  group_by(decision_on_giving_search_info_from_charity) %>%
-  summarise(percent=100*n()/nrow(dg))
-
-dg_search_contact_charity <-
-  dg %>%
-  group_by(decision_on_giving_search_contact_charity) %>%
-  summarise(percent=100*n()/nrow(dg))
-
-dg_search_consult_CRA_web <-
-  dg %>%
-  group_by(decision_on_giving_search_consult_CRA_web) %>%
-  summarise(percent=100*n()/nrow(dg))
-
-dg_search_consult_web <-
-  dg %>%
-  group_by(decision_on_giving_search_consult_web) %>%
-  summarise(percent=100*n()/nrow(dg))
-
-dg_search_general_online <-
-  dg %>%
-  group_by(decision_on_giving_search_general_online) %>%
-  summarise(percent=100*n()/nrow(dg))
-
-dg_search_ask_someone <-
-  dg %>%
-  group_by(decision_on_giving_search_ask_someone) %>%
-  summarise(percent=100*n()/nrow(dg))
-
-dg_search_consult_other_source <-
-  dg %>%
-  group_by(decision_on_giving_search_consult_other_source) %>%
-  summarise(percent=100*n()/nrow(dg))
-
-dg_search_other_meth <-
-  dg %>%
-  group_by(decision_on_giving_search_other_meth) %>%
   summarise(percent=100*n()/nrow(dg))
 
 dg_know_how_to_verify <-
@@ -101,27 +104,216 @@ dg_org_monitoring <-
 
 ```
 
+asdf
 
-```{r decision_on_giving}
-# for table
-dg_df<-data.frame('Category'=c(''),
-                  'NA'=c(''),
-                  'No'=c(''),
-                  'Yes'=c(''))
+```{r dg_search, echo=FALSE}
+dg_search <-
+  dg %>% 
+  mutate(decision_on_giving_search =
+           recode(
+             decision_on_giving_search,
+             'Yes'='Yes',
+             'No'='No',
+             'Sometimes'='Sometimes',
+             'You never consider donating to a charity that you have no...' = 'Never considered donating to a new charity')) %>%
+  count(decision_on_giving_search) %>% 
+  mutate(proportion = round(n/sum(n),4)*100)
 
-dg_df<-rbind(dg_df, c('Tax Credit', dg_tax_cred$percent))
-dg_df<-rbind(dg_df, c('Decide in Advance', dg_decide_in_advance$percent))
-dg_df<-rbind(dg_df, c('Search', dg_search$percent))
-dg_df<-rbind(dg_df, c('Know how to verify', dg_know_how_to_verify$percent))
-dg_df<-rbind(dg_df, c('Organization Monitoring', dg_org_monitoring$percent))
+dg_search %>%
+  ggplot(aes(x="", y=proportion, fill=decision_on_giving_search)) +
+  geom_bar(width=1, stat = "identity", color = "white") +
+  coord_polar("y", start = 0) +
+  geom_text(aes(label=paste(proportion, '%')), size=4, position=position_stack(vjust = 0.5)) +
+  theme_void() +
+  labs(fill="Decision search") +
+  theme(plot.title=element_text(face="bold"))
 
-rownames(dg_df)<-dg_df$Category
-dg_df<-dg_df[-c(1),]
-dg_df<-dg_df[-1]
+dg_search_detail <-
+  dg %>%
+  filter(decision_on_giving_search=="Yes" | decision_on_giving_search=="Sometimes") %>%
+  select(starts_with('decision_on_giving_search'))
 
-dg_df %>%
-  kable(caption = "Decision On Giving", booktabs = TRUE, linesep = "")
+dg_search_detail <-
+  dg_search_detail %>%
+  select(-decision_on_giving_search,
+         -decision_on_giving_search_consult_other_source)
+
+dg_search_df<-data.frame('Method'=c(''),
+                         'No'=c(''),
+                         'Yes'=c(''),
+                         'NA'=c(''))
+
+dg_search_lst<-c('Read information provided by the charity',
+                 'Contact the charity directly',
+                 'Consult the CRA website',
+                 'Consult the website of a non-profit or private organization',
+                 'A general online search',
+                 'Ask someone',
+                 'Other'
+)
+
+i <- 1
+for (r in colnames(dg_search_detail)){
+  counted<-
+    dg_search_detail %>%
+    count(.data[[r]]) %>%
+    mutate(proportion = round(n/sum(n),4)*100)
+  
+  dg_search_df<-rbind(dg_search_df, c(dg_search_lst[i], counted$proportion))
+  i<-i+1
+}
+
+dg_search_df<-dg_search_df[-c(1),]
+
+dg_search_df %>% 
+  as_tibble() %>%
+  relocate(Yes, .after=Method) %>%
+  kable(caption = "Decision On Giving search")
 ```
 
+It shows that people usually 
 
+```{r reasons_for_giving, echo=FALSE}
+# choose the data who has donated in the past 12 months
+reasons_for_giving <-
+  gss %>%
+    select(reas_giv_pers_affected,
+           reas_giv_tax_cred,
+           reas_giv_religious,
+           reas_giv_spiritual_beliefs,
+           reas_giv_cause,
+           reas_giv_compassion,
+           reas_giv_community_contribution,
+           reas_giv_being_asked)
+  # filter(reas_giv_pers_affected != "NA")
 
+rg_lst<-c('Personally affected',
+          'Tax Credit',
+          'Religious',
+          'Spiritual beliefs',
+          'Cause',
+          'Compassion',
+          'Community contribution',
+          'Being asked')
+
+rg<-data.frame('Reason'=c(''),
+               'NA'=c(''),
+               'No'=c(''),
+               'Yes'=c(''))
+
+i <- 1
+for (r in colnames(reasons_for_giving)){
+  counted<-
+    reasons_for_giving %>%
+    count(.data[[r]])
+  rg<-rbind(rg, c(rg_lst[i], counted$n))
+  i<-i+1
+}
+rg<-rg[-c(1),]
+
+rg %>% 
+  as_tibble() %>%
+  relocate(Yes, .after=Reason) %>%
+  relocate(No, .after=Yes) %>%
+  kable(caption = "Reasons for giving")
+```
+
+```{r reasons_for_not_giving, echo=FALSE}
+reasons_for_not_giving <-
+  gss %>%
+    select(starts_with("reas_not_giv")) %>%
+  mutate(reas_not_giv_charity_fraud = 
+           case_when(reas_not_giv_charity_fraud == "Agree" ~ "Yes",
+                     reas_not_giv_charity_fraud == "Disagree" ~ "No",
+                     reas_not_giv_charity_fraud == "NA" ~ "NA"),
+         reas_not_giv_so_many_org = 
+           case_when(reas_not_giv_so_many_org == "Agree" ~ "Yes",
+                     reas_not_giv_so_many_org == "Disagree" ~ "No",
+                     reas_not_giv_so_many_org == "NA" ~ "NA"))
+
+ng_lst<-c('Already gave',
+          'Cannot afford',
+          'Not being asked',
+          'Did not know where to donate',
+          'Hard to find cause',
+          'Volunteered instead',
+          'Gave directly to people',
+          'Tax credit not incentive enough',
+          'Money would not be used efficient',
+          'Not efficient fundraising',
+          'Not efficient impact',
+          'Not efficient explanation',
+          'Not efficient - other',
+          'Did not like the way requested',
+          'Request time of the day',
+          'Request number',
+          'Request tone',
+          'Request multiple times',
+          'Request method',
+          'Request - other',
+          'So many organizations',
+          'Charity fraud'
+          )
+
+ng<-data.frame('Reason'=c(''),
+               'NA'=c(''),
+               'No'=c(''),
+               'Yes'=c(''))
+
+i <- 1
+for (r in colnames(reasons_for_not_giving)){
+  counted<-
+    reasons_for_not_giving %>%
+    count(.data[[r]])
+  ng<-rbind(ng, c(ng_lst[i], counted$n))
+  i<-i+1
+}
+ng<-ng[-c(1),]
+ng %>% 
+  as_tibble() %>%
+  relocate(Yes, .after=Reason) %>%
+  relocate(No, .after=Yes) %>%
+  kable(caption = "Reasons for not giving")
+```
+
+```{r other_giving, echo=FALSE}
+other_giving<-
+  gss %>%
+  select(starts_with("other_giv_"))
+
+og_lst<-c('Food bank',
+          'Clothings, toys, or household',
+          'Bequest in reespond will',
+          'Direct to people',
+          'Direct to stranger',
+          'Direct to personal crowdfunding',
+          'Direct to family outside household',
+          'Direct to family outside household in Canada',
+          'Direct to family outside household outside Canada',
+          'Direct other')
+
+og<-data.frame('Other_giving'=c(''),
+               'NA'=c(''),
+               'No'=c(''),
+               'Yes'=c(''))
+
+i <- 1
+for (r in colnames(other_giving)){
+  counted<-
+    other_giving %>%
+    count(.data[[r]]) %>%
+    mutate(proportion = round(n/sum(n),4)*100)
+  og<-rbind(og, c(og_lst[i], counted$proportion))
+  i<-i+1
+}
+og<-og[-c(1),]
+
+og %>% 
+  as_tibble() %>%
+  relocate(Yes, .after=Reason) %>%
+  relocate(No, .after=Yes) %>%
+  kable(caption = "Other givings")
+```
+
+# extra questionnaires
+- How much do you donate proportional to your income? (I donate 10% of my income every year, etc.)
