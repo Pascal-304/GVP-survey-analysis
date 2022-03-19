@@ -9,7 +9,7 @@ abstract: "First sentence. Second sentence. Third sentence. Fourth sentence."
 output:
   bookdown::pdf_document2
 toc: FALSE
-#bibliography: references.bib
+bibliography: references.bib
 ---
 
 ```{r setup, include=FALSE}
@@ -68,9 +68,11 @@ gss<- read_csv('data1.csv', show_col_types = FALSE)
 raw_data <- read_csv('gssv.csv')
 ```
 
-# I. Introduction
+# Data
 
-This dataset contains core and 
+## Data Collection
+
+Data for 2018 General Social Survey on Giving, Volunteering, and Participation were collected by interviewing individuals 15 years of age or over in Canada's ten provinces excluding Yukon, Northwest Territories, and Nunavut. The full-residents of the institutions are excluded as well. It was collected from September 4 to December 28, 2018 by Statistics Canada. Respondents were given two option to complete the questionnaire online and via the telephone. 
 
 ```{r age, echo=FALSE}
 age <-
