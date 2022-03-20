@@ -494,10 +494,10 @@ og %>%
 ```
 
 Lastly, we observed the other givings they have made besides financial donations to the charity. It can be observed from Table \@ref(tab:othergiving) that 7% of the respondents have donated food to the organizations such as food bank, and 6.72% donated clothings, toys, or household goods. In addition, 6.64% have made other givings directly to the ones who were in need of help. 6.90% made a donation to a charity in their will or through another financial product such as insurance. However, we can see that people mostly make the financial donations to the charitable or non-profitable organizations. 
+### Method to make financial donations
 
-```{r donationresponse, fig.cap = "Comparing the responses to different methods", echo = FALSE}
+```{r donationresponse, echo=FALSE, fig.cap="Comparing the responses to different methods"}
 # Graph showing the counts for y/n for financial giving
-
 # select the required variables
 # rename the variables
 financial_giving <- gss %>% 
@@ -508,7 +508,7 @@ financial_giving <- gss %>%
          "online" = "fin_giving_online",
          "own initiative" = "fin_giving_own_initiative",
          "charity event" = "fin_giving_charity_event",
-         "in mem of someone" = "fin_giving_in_mem_of_someone",
+         "in memory of someone" = "fin_giving_in_mem_of_someone",
          "work" = "fin_giving_work",
          "door to door canvassing" = "fin_giving_door_to_door_canvassing",
          "shopping centre" = "fin_giving_shopping_centre",
@@ -521,7 +521,6 @@ financial_giving <- financial_giving %>%
   pivot_longer(!caseid,
                names_to = "name",
                values_to = "response")
-
 # plot data
 graph_1 <-
   financial_giving %>% 
@@ -531,22 +530,21 @@ graph_1 <-
        y = "Number of survey respondents") +
   coord_flip() +
   theme_minimal() +
-  scale_fill_brewer(palette = "PuBu")
-
-graph_1 + theme(legend.position = "bottom")
+  scale_fill_brewer(palette = "PuBu") +
+  theme(legend.position = "bottom")
 ```
 
-Figure \@ref(fig:donationresponse) shows the number of responses of the different methods responded to. For example, online means the number of people who made donations by responding to an online request which can be an email or social media. From the figure, it is clear that people tend to positively respond to request in shopping centre while other ways of requests received the least number of donations. However, the number of donations does not necessarily mean more amount donated. 
+Figure \@ref(fig:donationresponse) shows the number of responses of the different methods to make financial donations. For example, online indicates the number of respondents who made donations by responding to an online request which can be an email or social media. From the figure, it is clear that people tend to positively respond to request in shopping centre while other ways of requests received the least number of donations. However, the number of donations does not necessarily mean that more amount was donated.
 
-```{r numberdonations, fig.cap="Distribution of the total number of financial donations in the past 12 months", echo = FALSE}
+```{r numberdonations, echo=FALSE, fig.cap="Distribution of the total number of financial donations in the past 12 months"}
 # total number of financial donations
 # obtain the total number of financial donations from the raw dataset
-total_number_fin_donation <- raw_data %>% 
-  select(gs1dntot)
+total_number_fin_donation <- gss %>% 
+  select(totl_num_don12)
 
 # rename column with a more appropriate name
 clean_total_fin_donation <- total_number_fin_donation %>% 
-  rename(number_of_financial_donations = gs1dntot)
+  rename(number_of_financial_donations = totl_num_don12)
 
 # obtain the data for those who did not skip the question
 clean_total_fin_donation_1 <- 
@@ -567,12 +565,10 @@ clean_total_fin_donation_1 %>%
        y = "Number of donations") +
   theme_minimal()
 ```
-Figure \@ref(fig:numberdonations) shows the distribution of the number financial donations made by the survey respondents. It is important to note that out of the 16149 respondents, 3995 people skipped the question and this number was removed before making the graph. The most number of financial donations made was 72 but with most other respondents making between 1 and 5 donations in the last 12 months.
 
+Figure \@ref(fig:numberdonations) shows the distribution of the number financial donations made by the survey respondents in the past 12 months. It is important to note that out of the 16,149 respondents, 3,995 people skipped the question (i.e. 3,995 people did not make any financial donation to the charity in the last 12 months), and this number was removed before making the graph. The highest number of financial donations made was 72 whereas most of the other respondents made between 1 and 5 donations in the last 12 months.
 
-
-
-```{r totalamount, fig.cap="Distribution of the total amount donated in the past 12 months", echo = FALSE}
+```{r totalamount, echo=FALSE, fig.cap="Distribution of the total amount donated in the past 12 months"}
 # total amount of donations
 total_amount <- gss %>% 
   select(totl_amount_don12) %>% 
@@ -597,89 +593,64 @@ total_amount_1 %>%
 
 # total amount donated
 total_sum <- sum(total_amount_1$total)
-
 g <-total_amount_1 %>% 
   filter(total > 20000)
 ```
-Figure \@ref(fig:totalamount) illustrates how the donation amounts are distributed with 0.5 dollars as the least amount donated and $60,000 as the largest amount donated in the past 12 months. 3995 respondents chose to skip this question. A total of 9.3 million dollars have been donated by the 12154 Canadian respondents. From figure \@ref(fig:totalamount), most respondents donated amounts less than 200 dollars while only 28 out of the 12154 respondents donated more than 20000 dollars.
 
+Figure \@ref(fig:totalamount) illustrates how the amount of donations are distributed where \$0.50 is the the least amount donated and $60,000 is the largest amount donated in the past 12 months. 3,995 respondents chose to skip this question. A total of 9.3 million dollars have been donated by the 12,154 Canadian respondents. From Figure \@ref(fig:totalamount), most respondents donated amounts less than \$200 while 28 out of the 12,154 respondents donated more than \$20,000.
 
-```{r income, fig.cap = "Comparing the number of respondents in the different income groups", echo = FALSE}
+```{r income, echo = FALSE, fig.cap = "Comparing the number of respondents in the different income groups"}
 # obtain income data
 # rename the variables name
-income_group <- raw_data %>% 
-  select(incg2, famincg2) %>% 
-  rename(personal_income_group = incg2,
-         family_income_group = famincg2)
-
-# recode the variable values
-income_group <- income_group %>% 
-  mutate(personal_income_group = 
-           recode(personal_income_group,
-                  "1" = "less than 25000",
-                  "2" = "25000 to 49999",
-                  "3" = "50000 to 74999",
-                  "4" = "75000 to 99999",
-                  "5" = "10000 to 124999",
-                  "6" = "125000 or more"),
-         family_income_group = recode(
-           family_income_group,
-                  "1" = "less than 25000",
-                  "2" = "25000 to 49999",
-                  "3" = "50000 to 74999",
-                  "4" = "75000 to 99999",
-                  "5" = "10000 to 124999",
-                  "6" = "125000 or more")
-           )
+income_group <- gss %>% 
+  select(income_gp, fam_income_gp, totl_amount_don12) %>%
+  mutate(income_gp = 
+           case_when(
+             income_gp == 'Less than $25,000' ~ '<$25,000',
+             income_gp == '$25,000 to $49,999' ~ '$25,000-$49,999',
+             income_gp == '$50,000 to $74,999' ~ '$50,000-$74,999',
+             income_gp == '$75,000 to $99,999' ~ '$75,000-$99,999',
+             income_gp == '$100,000 to $124,999' ~ '$100,000-$124,999',
+             income_gp == '$125,000 and more' ~ '>$125,000',
+                     ),
+    income_gp = factor(income_gp,
+                            levels = c('>$125,000',
+                                       '$100,000-$124,999',
+                                       '$75,000-$99,999',
+                                       '$50,000-$74,999',
+                                       '$25,000-$49,999',
+                                       '<$25,000')
+                                      )
+  )
 
 # distribution of income
 income_group %>% 
-  ggplot(aes(x = personal_income_group)) +
+  ggplot(aes(x = income_gp)) +
   geom_bar(fill = "lightblue") +
   labs(x = "Personal Income group before taxes",
        y = "Number of respondents") +
   theme_minimal() +
   coord_flip()
-
-
 ```
-Figure \@ref(fig:income) shows the distribution of personal income groups of the survey respondents. The data was obtained using the CRA income tax filing in 2017. We can see that most respondents were from low to middle income background. The highest proportion of respondents were found in the 25000 to 49999 income group (29.95%) and 78.23% of the respondents earned less than $75000 annually before taxes.
 
-
-
+Figure \@ref(fig:income) shows the distribution of personal income groups of the survey respondents. The data was obtained using the CRA income tax filing in 2017. We can see that most respondents were from low to middle income background. The highest proportion of respondents were found in the \$25,000 to \$49,999 income group (29.95%) and 78.23% of the respondents earned less than $75,000 annually before taxes.
 
 ```{r averagedonate, echo=FALSE}
 # age income 
-donate_income_group <- raw_data %>% 
-  select(incg2, gs1datot) %>% 
-  rename(personal_income_group = incg2,
-         total_amount_donated = gs1datot)
-
-donate_income_group <- donate_income_group %>% 
-  mutate(personal_income_group = 
-           recode(personal_income_group,
-                  "1" = "less than 25000",
-                  "2" = "25000 to 49999",
-                  "3" = "50000 to 74999",
-                  "4" = "75000 to 99999",
-                  "5" = "10000 to 124999",
-                  "6" = "125000 or more")
-           )
 
 # create summary table
-
-donate_income_group %>% 
-  filter(total_amount_donated != 999999999.96) %>% 
-  group_by(personal_income_group) %>% 
-  summarise(mean = round(mean(total_amount_donated), 2),
-            sd = round(sd(total_amount_donated), 2)) %>% 
+income_group %>% 
+  filter(totl_amount_don12 != 999999999.96) %>% 
+  group_by(income_gp) %>% 
+  summarise(mean = paste('$', round(mean(totl_amount_don12), 2)),
+            sd = paste('$', round(sd(totl_amount_don12), 2))) %>% 
   kable(caption = "Summary statistics of total amount donated per personal income group",
-        col.names = c("Personal Income group", "Average amount donated", "Standard deviation of amount donaated"),
+        col.names = c("Personal Income group", "Average amount donated", "Standard deviation of amount donated"),
         linesep = "",
         align = c("c", "c", "c"))
-
 ```
-Table \@ref(tab:averagedonate) shows the mean of the total amount donated for each personal income group as well as its variability. We can note that in general, respondents in higher income group tends have donated more on average which is not surprising. We can also observed that the mean amount donated for the 75000 to 99999 and 100000 to 124999 income group do not differ by much ($63.19) but the variability is much larger which can explain why the difference is so small. There must be some respondents who donated much larger amount compared to what others in the same income group have donated.
+
+Table \@ref(tab:averagedonate) shows the mean of the total amount donated for each personal income group as well as its variability. We can note that in general, respondents in higher income group tends have donated more on average which is not surprising. We can also observed that the mean amount donated for the \$75,000 to \$99,999 and \$100,000 to \$124,999 income group do not differ by much ($63.19) but the variability is much larger which can explain why the difference is so small. There must be some respondents who donated much larger amount compared to what others in the same income group have donated.
 
 \newpage
 
