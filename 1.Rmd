@@ -695,6 +695,16 @@ Second, this survey covers a wide range of giving with detailed questions. Howev
 
 Third, the survey was conducted from September to December in 2018. It asked for the financial donation given to a charitable or other non-profit organization during the 12-month reference period preceding the survey. Since every respondent completed the questionnaire at a different time, it is hard to define the exact time frame that was used in collecting the data. It would have been better if the period was specified such as the donations made during the period of January 1st to December 31st in 2017. In addition, even though the respondents are most likely to answer the questionnaires based on their donation history in 2018, there are several questions which asked on an annual basis. For example, the data for personal income was obtained using the CRA income tax filing in 2017. Thus, the time period does not match among the questions. Furthermore, it is not mentioned whether the respondents have consented to use their income tax information. 
 
+## Bias and Ethical concerns
+
+This data is about people, so there are likely to be bias and ethical considerations involved. The GSS GVP asks for voluntary participation. The interviewer will first inform the participants about the survey and the importance and implications of conducting the survey and encourage participation instead of forcing people to participate. The participants can keep their anonymity without the fear of their private information being divulged. Statistics Canada made sure the participants have their responses confidential.
+
+One problem with the dataset and questionnaire is the fact that there are only 2 categories for gender: male and female, creating gender bias. The survey questionnaire failed to account for other gender. The very fact that we want to classify people into groups is likely to create bias. However, it is still important to obtain gender data. An alternative would be including more options such as transgender, non-binary and other with the option to specify if they would like to.
+
+Another ethical concern is the fact that Statistics Canada obtained data from other sources such as the CRA tax filing data. It is not mentioned if the respondents were made aware that their tax filing information were used in this survey. 
+
+
+
 # Appendix
 
 ## Supplementary survey
@@ -779,7 +789,9 @@ By proceeding with this survey, you understand that your response will be used t
    
 13. 
 
+## End page
 
+Thank you very much for taking your time to participate in the survey. If you have any questions or want to reach out to us, you can contact us at pascal.leeslew@mail.utoronto.ca or clara.park@mail.utoronto.ca.
 
 # extra questionnaires
 - How much do you donate proportional to your income? (I donate 10% of my income every year, etc.)
