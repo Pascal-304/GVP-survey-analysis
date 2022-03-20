@@ -32,14 +32,9 @@ The rest of this paper will be as follows:
 
 # Data
 
-We obtained the 2018 GSS survey data on Giving, Volunteering and Participating through the University of Toronto library. 
+## Data Collection
 
-Sample frame: responders eligible for interview has to be 15 or above from Canada's ten provinces. The 2018 GSS GVP was conducted from September 4th to December 28th 2018. In previous GVP surveys, only paper questionnaire and telephone were the methods of data collection. However, for the 2018 iteration, an online option was made available.
-
-The ones collecting the data are aware that the data may face sampling and non-sampling errors.
-
-It is the seventh time the GVP was run. It was conducted by Statistics Canada. 2018 was the first time that online questionnaire can be completed. 
-
+The data was obtained from Canadian 2018 General Social Survey (GSS) on Giving, Volunteering, and Participation (GVP). The survey was conducted by interviewing individuals 15 years of age or over in Canada's ten provinces excluding Yukon, Northwest Territories, and Nunavut. It was collected from September 4 to December 28, 2018 by Statistics Canada. Respondents were given two option to complete the questionnaire online and via the telephone. 
 
 
 ## Survey Methodology
