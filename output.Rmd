@@ -5,11 +5,11 @@ author:
   - Pascal Lee Slew
   - Yunkyung Park
 date: "`r format(Sys.time(), '%d %B %Y')`"
-abstract: "First sentence. Second sentence. Third sentence. Fourth sentence."
+abstract: "Giving is one way to get involve with the community. Statistics Canada has been collecting data on giving, volunteering,and participating since 1997. In this paper, we focused on exploring the giving aspect, especially the reasons for giving, the decisions on giving and the behavioral patterns on giving. We found that about 68% of respondents read information provided by charity before making a decision. The reasons for giving all have about 37%. The analysis and monitoring of these social trends give a reflection of the living conditions of the Canadian public and has significant implications for public policy and program decisions."
 output:
   bookdown::pdf_document2
 toc: FALSE
-bibliography: references.bib
+#bibliography: references.bib
 ---
 
 ```{r setup, include=FALSE}
@@ -19,19 +19,72 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Introduction
 
+In a highly materialistic society, personal interest and profit-making have become core values. We are seeing a decline in charitable giving in recent years. Giving reflects the involvement with the community and has an impact on it. 
+Statistics Canada, along with other bodies, has collected data on giving, volunteering and participating. The main objectives of the GSS GVP are to collect data on a regular basis for analysis of societal trends and monitoring any changes in the social behavior of the Canadian public. This would provide vital information to governmental bodies and have implications for policy-making and program decisions.
+ 
+ 
+Indeed, about 10 billion dollars are donated by Canadians. However, this number is on the decline.
 
+This paper focused on the giving aspect. We conducted a descriptive analysis of the giving aspect. Our aim to understand the behavioral pattern on giving of the Canadian public.
+
+We obtained data through the University of Toronto
+
+
+
+The 2018 GSS GVP measures changes in society related to living conditions and well-being. It provides data to important stakeholders such as the Canadian System of National Accounts.
 
 # Data
 
 We obtained the 2018 GSS survey data on Giving, Volunteering and Participating through the University of Toronto library. 
 
-Sample frame: responders eligible for interview has to be 15 or above from Canada's ten provinces. The 2018 GSS GVP was conducted from September to December 2018. In previous GVP surveys, only paper questionnaire and telephone were the methods of data collection. However, for the 2018 iteration, an online option was made available.
+Sample frame: responders eligible for interview has to be 15 or above from Canada's ten provinces. The 2018 GSS GVP was conducted from September 4th to December 28th 2018. In previous GVP surveys, only paper questionnaire and telephone were the methods of data collection. However, for the 2018 iteration, an online option was made available.
 
 The ones collecting the data are aware that the data may face sampling and non-sampling errors.
 
-It is the seventh time the GVP was run. 
+It is the seventh time the GVP was run. It was conducted by Statistics Canada. 2018 was the first time that online questionnaire can be completed. 
+
+
 
 ## Survey Methodology
+
+How respondents were selected?
+It applied the age-order selection method. It is important to note that all respondents were not contacted the same way; some were contacted through mail, others by telephone.
+
+Changes to survey questionnaire
+content was updated from 2004 to 2018 using experience from prior surveys, notably clarity of questions and consultations with stakeholders from charity organizations. 
+
+Another important feature of the 2018 GSS GVP is that not all respondents have the same number of questions. For example, only respondents who donated at least 10 dollars were  asked questions about decisions and reasons for giving. And those who donated more than 1150 dollars did not have to answer why they did not choose to donate more.
+
+For the online questionnaire, a pilot test was conducted online and by telephone from February 2018 to March 30 2018.
+
+sample frame
+it has not been consistent over the years. In 2004, 2007 and 2010, random digit dialling was used. From 2013, the sample frame included "cell phone only" households, which is a population not covered by RDD. 
+
+Internet option - adapt to technology and demands on Canadians'time. - flexibility and convenience
+
+target population
+all persons who are at least 15 years old with the exceptions of residents of the Yukon, Northwest Territories and Nunavut as well as full-time residents of institutions
+
+proceeded with stratification
+stratification sampling with the provinces divided into strata and many of the Census Metropolitan Areas (CMA) considered as separate strata. totaling 27 stata
+
+frame
+2 parts - lists of telephone numbers in use (both landline and cellular) available to Statistics Canada
+- address register for mail code for online option
+
+for each stratum, a siimple random sample without replacement was selected.
+
+rejective sampling - 'rejecting' a portion of population with a given probability to allow more time and effort to be spent trying to find the population of interest, volunteers
+
+target sample size was 20000 but actual number is 16149
+minimum sample size for each stratum was determined beforehand to ensure acceptable sample variability
+
+majority of interviewers had previous experience with gss or csgvp
+
+- explain importance of survey and encourage participation
+
+response rate was 41.9%
+less than previous gss but not comparable
 
 
 
@@ -68,13 +121,11 @@ gss<- read_csv('data1.csv', show_col_types = FALSE)
 raw_data <- read_csv('gssv.csv')
 ```
 
-# Data
+# I. Introduction
 
-## Data Collection
+This dataset contains core and 
 
-Data for 2018 General Social Survey on Giving, Volunteering, and Participation were collected by interviewing individuals 15 years of age or over in Canada's ten provinces excluding Yukon, Northwest Territories, and Nunavut. The full-residents of the institutions are excluded as well. It was collected from September 4 to December 28, 2018 by Statistics Canada. Respondents were given two option to complete the questionnaire online and via the telephone. 
-
-```{r age, echo=FALSE, fig.cap='Distribution of age-groups and gender in the 2018 GSS survey'}
+```{r age, echo=FALSE}
 age <-
   gss %>%
   mutate(age_group = 
@@ -106,56 +157,38 @@ age %>%
        fill='Gender')
 ```
 
-The age distribution of survey respondents is shown in Figure \@ref(fig:age). Among the selected household, one member was chosen to represent the household. Figure \@ref(fig:age) shows that it was more likely that the female in their middle ages were selected to complete the questionnaire.
-
-```{r maritalstatus, echo=FALSE, fig.cap='Marital Status'}
-income <-
-  gss %>%
-  mutate(fam_income_quintile = 
-           case_when(fam_income_quintile == "Highest quintile" ~ "Highest",
-                     fam_income_quintile == "Second quintile" ~ "Second",
-                     fam_income_quintile == "Third quintile" ~ "Third",
-                     fam_income_quintile == "Fourth quintile" ~ "Fourth",
-                     fam_income_quintile == "Lowest quintile" ~ "Lowest",
-                     ),
-         fam_income_quintile = factor(fam_income_quintile,
-                                      levels = c('Highest',
-                                                 'Second',
-                                                 'Third',
-                                                 'Fourth',
-                                                 'Lowest')
-         )
-  )
-
-income %>%
-  ggplot(mapping=aes(x=marital_status))+
-  geom_bar() + 
-  theme_minimal() +
-  labs(x='', title='Marital Status') +
-  theme(axis.text.x = element_text(angle=15))
-```
-
-```{r maritalandincome, echo=FALSE, fig.cap='Marital Status and Family Income Quintile'}
-
-income %>%
-  ggplot(mapping=aes(x=fam_income_quintile, fill=fam_income_quintile)) +
+```{r maritalstatus, echo=FALSE, fig.cap='Marital Status and Income'}
+age %>%
+  ggplot(mapping=aes(x=fam_income_quintile)) +
   geom_bar() +
   theme_minimal() +
   labs(x='', title='Marital Status') +
-  theme(axis.text.x = element_text(angle=15), legend.position='none') +
+  theme(axis.text.x = element_text(angle=15)) +
   facet_wrap(vars(marital_status),
              dir = "v",
              scales = "free")
 ```
 
-Marital status is important in tracking the evolution of social attitudes. The combination of the marital status and family income can be used to indicate the socio-economic status of various types of families. Figure \@ref(fig:maritalstatus) indicates that the most common family structure in Canada is married couples. Figure \@ref(fig:maritalandincome) tells that the distribution of the family income quintile is similar between the married couples and the common-law couples, and it is similar among the rest.
+Marital status is important in tracking the evolution of social attitudes. The combination of the marital status and family income indicates the socio-economic status of various types of families. 
 
-### Awareness
+```{r decisionongiving, echo=FALSE, fig.cap='Decision'}
 
-```{r awareness, echo=FALSE, fig.cap="Awareness of the charity organizations"}
 dg <- gss %>% 
   select(starts_with('decision_on_giving_'))
 
+dg_decide_in_advance <-
+  dg %>%
+  group_by(decision_on_giving_decide_in_advance) %>%
+  summarise(percent=100*round(n()/nrow(dg),4))
+
+dg %>%
+  ggplot(aes(x=decision_on_giving_decide_in_advance)) +
+  geom_bar() +
+  theme_minimal()
+
+```
+
+```{r awareness, echo=FALSE, fig.cap="Awareness of the charity organizations"}
 dg_awareness<-
   dg %>%
     select(decision_on_giving_know_how_to_verify, decision_on_giving_org_monitoring)
@@ -163,7 +196,7 @@ dg_awareness<-
 awareness_lst<-c('Know how to verify whether an organization is a registered charity',
                  'Monitor how charities in Canada use their donations')
 
-df_awareness<-data.frame('Items'=c(''),
+df_awareness<-data.frame('Method'=c(''),
                          'No'=c(''),
                          'Yes'=c(''),
                          'NA'=c(''))
@@ -182,39 +215,40 @@ df_awareness<-df_awareness[-c(1),]
 
 df_awareness %>% 
   as_tibble() %>%
-  relocate(Yes, .after=Items) %>%
+  relocate(Yes, .after=Method) %>%
   relocate(No, .after=Yes) %>%
   kable(caption = "Awareness of the charity organizations", format="latex") %>%
   row_spec(0, bold=TRUE) %>%
   kable_styling()
 ```
 
-Based on Table \@ref(tab:awareness), we can first observe that most people do not know how to check if a charity is registered in Canada. A "registered charity" refers to a charitable organization that is registered with the Canada Revenue Agency (@CRA). The donation made to the registered charity is exempted from paying income tax, and the charity can issue tax receipts for donations it receives (@CRA). Next, most charities openly share their information on how the donations are being used for its accountability and transparency (@charity). However, we can tell that people do not monitor how charities use their donations. 
 
-### How to decide where to donate 
 
-```{r dgsearch, echo=FALSE, fig.cap='Do people search before making a donation?'}
-# https://statisticsglobe.com/wrap-long-axis-labels-ggplot2-plot-into-multiple-lines-r
-dg <-
+
+
+
+```{r dgsearch, echo=FALSE}
+dg_search <-
   dg %>% 
   mutate(decision_on_giving_search =
            recode(
              decision_on_giving_search,
              'Yes'='Yes',
              'No'='No',
-             'Sometimes'='Yes',
-             'NA'='Never considered donating',
-             'You never consider donating to a charity that you have no...' = 'Never considered donating'))
+             'Sometimes'='Sometimes',
+             'You never consider donating to a charity that you have no...' = 'Never considered donating to a new charity')) %>%
+  count(decision_on_giving_search) %>% 
+  mutate(proportion = round(n/sum(n),4)*100)
 
-dg %>%
-  ggplot(aes(x=decision_on_giving_search, fill=decision_on_giving_search)) +
-  geom_bar() +
-  theme_minimal() +
-  theme(legend.position='none') +
-  scale_x_discrete(labels = function(x) str_wrap(x, width = 10))
-```
+dg_search %>%
+  ggplot(aes(x="", y=proportion, fill=decision_on_giving_search)) +
+  geom_bar(width=1, stat = "identity", color = "white") +
+  coord_polar("y", start = 0) +
+  geom_text(aes(label=paste(proportion, '%')), size=4, position=position_stack(vjust = 0.5)) +
+  theme_void() +
+  labs(fill="Decision search") +
+  theme(plot.title=element_text(face="bold"))
 
-```{r search, echo=FALSE, fig.cap='What method do people use in searching a new charity?'}
 dg_search_detail <-
   dg %>%
   filter(decision_on_giving_search=="Yes" | decision_on_giving_search=="Sometimes") %>%
@@ -254,23 +288,13 @@ dg_search_df<-dg_search_df[-c(1),]
 
 dg_search_df %>% 
   as_tibble() %>%
-  mutate(Yes = as.numeric(Yes),
-         No = as.numeric(No),
-         NA. = as.numeric(NA.)) %>%
-  arrange(desc(Yes)) %>%
   relocate(Yes, .after=Method) %>%
-  kable(caption = "Decision On Giving search") %>%
-  row_spec(0, bold=TRUE) %>%
-  kable_styling()
+  kable(caption = "Decision On Giving search")
 ```
 
-Next, we observed whether people do a research on the organizations before making donations, and if they do, what methods are being used to search for the charity. Figure \@ref(fig:dgsearch) shows that most people have not considered making donations, but if they have, then they usually search for information on the charity before giving.
+It shows that people usually 
 
-Among those who search before they donate to a charity, Figure \@ref(fig:search) shows that people are mostly likely to read information provided by the charity and do a general online search. It should be noted that even though the list of the registered charitities can be viewed from the CRA website, people did not consider consulting the CRA website before making donations. 
-
-### Reasons for giving
-
-```{r reasonsforgiving, echo=FALSE, fig.cap='Reasons for giving'}
+```{r reasonsforgiving, echo=FALSE}
 # choose the data who has donated in the past 12 months
 reasons_for_giving <-
   gss %>%
@@ -311,35 +335,15 @@ rg<-rg[-c(1),]
 
 rg %>% 
   as_tibble() %>%
-  mutate(Yes = as.numeric(Yes),
-         No = as.numeric(No),
-         NA. = as.numeric(NA.)) %>%
-  arrange(desc(Yes)) %>%
   relocate(Yes, .after=Reason) %>%
   relocate(No, .after=Yes) %>%
-  kable(caption = "Reasons for giving") %>%
-  row_spec(0, bold=TRUE) %>%
-  kable_styling()
+  kable(caption = "Reasons for giving")
 ```
 
-We observed the reasons for giving. Note that only the respondents who have made the donations in the past 12 months have answered this questionnaire. Figure \@ref(fig:reasonsforgiving) indicates that it varies for each people why they decide to make donations. There is no general reason that specifies the reason people give money to the charity. 
-
-### Reasons for not giving (more)
-
-```{r reasonsfornotgiving, echo=FALSE, fig.cap='Reasons for not giving (more)'}
+```{r reasonsfornotgiving, echo=FALSE}
 reasons_for_not_giving <-
   gss %>%
-    select(starts_with("reas_not_giv"),
-           -reas_not_giv_not_efficient_fundrais,
-           -reas_not_giv_not_efficient_impact,
-           -reas_not_giv_not_efficient_explanation,
-           -reas_not_giv_not_efficient_other,
-           -reas_not_giv_request_time_of_day,
-           -reas_not_giv_request_num,
-           -reas_not_giv_request_tone,
-           -reas_not_giv_request_multiple,
-           -reas_not_giv_request_method,
-           -reas_not_giv_request_other) %>%
+    select(starts_with("reas_not_giv")) %>%
   mutate(reas_not_giv_charity_fraud = 
            case_when(reas_not_giv_charity_fraud == "Agree" ~ "Yes",
                      reas_not_giv_charity_fraud == "Disagree" ~ "No",
@@ -358,7 +362,17 @@ ng_lst<-c('Already gave',
           'Gave directly to people',
           'Tax credit not incentive enough',
           'Money would not be used efficient',
+          'Not efficient fundraising',
+          'Not efficient impact',
+          'Not efficient explanation',
+          'Not efficient - other',
           'Did not like the way requested',
+          'Request time of the day',
+          'Request number',
+          'Request tone',
+          'Request multiple times',
+          'Request method',
+          'Request - other',
           'So many organizations',
           'Charity fraud'
           )
@@ -381,33 +395,28 @@ ng<-ng[-c(1),]
 
 ng %>% 
   as_tibble() %>%
-  mutate(Yes = as.numeric(Yes),
-         No = as.numeric(No),
-         NA. = as.numeric(NA.)) %>%
-  arrange(desc(Yes)) %>%
   relocate(Yes, .after=Reason) %>%
   relocate(No, .after=Yes) %>%
-  kable(caption = "Reasons for not giving") %>%
-  row_spec(0, bold=TRUE) %>%
-  kable_styling()
+  kable(caption = "Reasons for not giving")
 ```
-
-Next, we observed for the reasons for not giving. If the respondents have made the donations in the past 12 months, then it asked for the reasons why they did not donate more, which can be observed from Figure \@ref(fig:reasonsfornotgiving) that 31.17% of the respondents have donated in the past 12 months. When the respondents have not made the donations, then it asked for the reasons for not giving. Figure \@ref(fig:reasonsfornotgiving) shows that 42.57% of the respondents decided to volunteer instead of giving. Also, 42.41% of the respondents answered that they did not like the way they were being requested. Additionally, it is worth mentioning that although there are so many organizations, that was not the main reason why people decided not to give money. It was that they did not know where to make donations among the organizations, and they were afraid that money would not be used efficient. Furthermore, 42.32% of the respondents said that they gave money directly to people who were in need of financial assistance.  
-
-### Other givings
 
 ```{r othergiving, echo=FALSE}
 other_giving<-
   gss %>%
   select(starts_with("other_giv_"))
 
-og_lst<-c('Food',
-          'Clothings, toys, or household goods',
-          'Other',
-          'Directly to people'
-          )
+og_lst<-c('Food bank',
+          'Clothings, toys, or household',
+          'Bequest in reespond will',
+          'Direct to people',
+          'Direct to stranger',
+          'Direct to personal crowdfunding',
+          'Direct to family outside household',
+          'Direct to family outside household in Canada',
+          'Direct to family outside household outside Canada',
+          'Direct other')
 
-og<-data.frame('Other'=c(''),
+og<-data.frame('Other_giving'=c(''),
                'NA'=c(''),
                'No'=c(''),
                'Yes'=c(''))
@@ -425,19 +434,13 @@ og<-og[-c(1),]
 
 og %>% 
   as_tibble() %>%
-  mutate(Yes = as.numeric(Yes),
-         No = as.numeric(No),
-         NA. = as.numeric(NA.)) %>%
-  relocate(Yes, .after=Other) %>%
+  relocate(Yes, .after=Other_giving) %>%
   relocate(No, .after=Yes) %>%
-  kable(caption = "Other givings") %>%
-  row_spec(0, bold=TRUE) %>%
-  kable_styling()
+  kable(caption = "Other givings")
 ```
 
-Lastly, we observed the other givings they have made besides financial donations to the charity. 7% of the respondents have donated food to the organizations such as food bank, and 6.72% donated clothings, toys, or household goods. In addition, 6.64% have made other givings directly to the ones who were in need of help. 6.90% made a donation to a charity in their will or through another financial planning product such as insurance.
 
-```{r donationresponse, fig.cap = "Donations made by responding to methods", echo = FALSE}
+```{r donationresponse, fig.cap = "Comparing the responses to different methods", echo = FALSE}
 # Graph showing the counts for y/n for financial giving
 
 # select the required variables
@@ -478,9 +481,9 @@ graph_1 <-
 graph_1 + theme(legend.position = "bottom")
 ```
 
- (Figure \@ref(fig:donationresponse)) shows the number of responses of the different responses to donations. For example, online means the number of people who made donations by responding to an online request. From the figure, it is clear that people tend to positively respond to request in shopping centre while other ways of requests received the least number of donations. # However, the number of donations does not correlate with the amount donated.
+Figure \@ref(fig:donationresponse) shows the number of responses of the different methods responded to. For example, online means the number of people who made donations by responding to an online request which can be an email or social media. From the figure, it is clear that people tend to positively respond to request in shopping centre while other ways of requests received the least number of donations. However, the number of donations does not necessarily mean more amount donated. 
 
-```{r numberdonations, echo = FALSE}
+```{r numberdonations, fig.cap="Distribution of the total number of financial donations in the past 12 months", echo = FALSE}
 # total number of financial donations
 # obtain the total number of financial donations from the raw dataset
 total_number_fin_donation <- raw_data %>% 
@@ -509,12 +512,12 @@ clean_total_fin_donation_1 %>%
        y = "Number of donations") +
   theme_minimal()
 ```
-(Figure \@ref(fig:numberdonations)) shows the distribution of financial donations made by the survey respondents. It is important to note that out of the 16149 respondents, 3995 people skipped the question and this number was removed before making the graph. The most number of financial donations made was 72 but with most other respondents making between 1 and 5 donations in the last 12 months.
+Figure \@ref(fig:numberdonations) shows the distribution of the number financial donations made by the survey respondents. It is important to note that out of the 16149 respondents, 3995 people skipped the question and this number was removed before making the graph. The most number of financial donations made was 72 but with most other respondents making between 1 and 5 donations in the last 12 months.
 
 
 
 
-```{r totalamount, echo = FALSE}
+```{r totalamount, fig.cap="Distribution of the total amount donated in the past 12 months", echo = FALSE}
 # total amount of donations
 total_amount <- gss %>% 
   select(totl_amount_don12) %>% 
@@ -537,12 +540,16 @@ total_amount_1 %>%
        y = "Number of donations") +
   theme_minimal()
 
+# total amount donated
 total_sum <- sum(total_amount_1$total)
+
+g <-total_amount_1 %>% 
+  filter(total > 20000)
 ```
-(Figure \@ref(fig:totalamount)) illustrates how the donation amounts are distributed with $0.5 as the smallest amount donated and $60,000 as the largest amount donated in the past 12 months. 
+Figure \@ref(fig:totalamount) illustrates how the donation amounts are distributed with 0.5 dollars as the least amount donated and $60,000 as the largest amount donated in the past 12 months. 3995 respondents chose to skip this question. A total of 9.3 million dollars have been donated by the 12154 Canadian respondents. From figure \@ref(fig:totalamount), most respondents donated amounts less than 200 dollars while only 28 out of the 12154 respondents donated more than 20000 dollars.
 
 
-```{r income, echo = FALSE}
+```{r income, fig.cap = "Comparing the number of respondents in the different income groups", echo = FALSE}
 # obtain income data
 # rename the variables name
 income_group <- raw_data %>% 
@@ -579,15 +586,45 @@ income_group %>%
   theme_minimal() +
   coord_flip()
 
-income_group %>% 
-  ggplot(aes(x = family_income_group)) +
-  geom_bar(fill = "orange") +
-  labs(x = "Family Income group before taxes",
-       y = "Number of respondents") +
-  theme_minimal() +
-  coord_flip()
+
 ```
-The figure below shows the personal income group distribution. Most of the survey respondents fall in the lower income groups with the most in the 20000 to 49999 income bracket. This is expected since income distributed in the country. ...
+Figure \@ref(fig:income) shows the distribution of personal income groups of the survey respondents. The data was obtained using the CRA income tax filing in 2017. We can see that most respondents were from low to middle income background. The highest proportion of respondents were found in the 25000 to 49999 income group (29.95%) and 78.23% of the respondents earned less than $75000 annually before taxes.
+
+
+
+
+```{r averagedonate, echo=FALSE}
+# age income 
+donate_income_group <- raw_data %>% 
+  select(incg2, gs1datot) %>% 
+  rename(personal_income_group = incg2,
+         total_amount_donated = gs1datot)
+
+donate_income_group <- donate_income_group %>% 
+  mutate(personal_income_group = 
+           recode(personal_income_group,
+                  "1" = "less than 25000",
+                  "2" = "25000 to 49999",
+                  "3" = "50000 to 74999",
+                  "4" = "75000 to 99999",
+                  "5" = "10000 to 124999",
+                  "6" = "125000 or more")
+           )
+
+# create summary table
+
+donate_income_group %>% 
+  filter(total_amount_donated != 999999999.96) %>% 
+  group_by(personal_income_group) %>% 
+  summarise(mean = round(mean(total_amount_donated), 2),
+            sd = round(sd(total_amount_donated), 2)) %>% 
+  kable(caption = "Summary statistics of total amount donated per personal income group",
+        col.names = c("Personal Income group", "Average amount donated", "Standard deviation of amount donaated"),
+        linesep = "",
+        align = c("c", "c", "c"))
+
+```
+Table \@ref(tab:averagedonate) shows the mean of the total amount donated for each personal income group as well as its variability. We can note that in general, respondents in higher income group tends have donated more on average which is not surprising. We can also observed that the mean amount donated for the 75000 to 99999 and 100000 to 124999 income group do not differ by much ($63.19) but the variability is much larger which can explain why the difference is so small. There must be some respondents who donated much larger amount compared to what others in the same income group have donated.
 
 \newpage
 
@@ -599,8 +636,6 @@ The figure below shows the personal income group distribution. Most of the surve
 
 # extra questionnaires
 - How much do you donate proportional to your income? (I donate 10% of my income every year, etc.)
-- Are you thinking of making any donations in the near future?
-- What changes will make you to want to donate in the near future?
 
 - more categories for gender, with possibly a space to specify like other, specify
 - when people feel like donating
