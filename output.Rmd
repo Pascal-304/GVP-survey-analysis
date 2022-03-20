@@ -91,7 +91,7 @@ age %>%
 
 ## Key features
 
-The raw data includes 956 variables which were derived from the questionnaire. As mentioned in the above, some key features include classification variables including age, sex, marital status, income, and core contents such as financial giving, the total amount of donations, and etc. Table \@reg(tab:data) shows a subset of key features that will be discussed in this paper. It was creased using 'kableExtra' [@citekableExtra].
+The raw data includes 956 variables which were derived from the questionnaire. As mentioned in the above, some key features include classification variables including age, sex, marital status, income, and core contents such as financial giving, the total amount of donations, and etc. The dataset is processed and analyzed using 'R' [@citeR] mainly with the 'tidyverse' [@citetidyverse] and 'dplyr' [@citedplyr] packages. The package 'janitor' [@citejanitor] is used to clean data, and the graphs and the tables are created in 'ggplot2' [@citeggplot2] and 'kableExtra' [@citekableExtra], respectively. The package 'stringr' [@citestringr] is used to manipulate the character string. The packages 'bookdown' [@citebookdown] and 'knitr' [@citeknitr] are used in generating the R Markdown report. Table \@reg(tab:data) created using 'kableExtra' [@citekableExtra] shows a subset of key features that will be discussed in this paper.
 
 ```{r data, echo=FALSE}
 gss %>%
