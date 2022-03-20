@@ -691,7 +691,9 @@ Table \@ref(tab:averagedonate) shows the mean of the total amount donated for ea
 
 # extra questionnaires
 - How much do you donate proportional to your income? (I donate 10% of my income every year, etc.)
-
+- Are you thinking of making any donations in the near future?
+- What changes will make you to want to donate in the near future?
+- 
 - more categories for gender, with possibly a space to specify like other, specify
 - when people feel like donating
 - motivation for donating, in the family
