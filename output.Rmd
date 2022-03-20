@@ -494,7 +494,7 @@ graph_1 + theme(legend.position = "bottom")
 
 Figure \@ref(fig:donationresponse) shows the number of responses of the different methods responded to. For example, online means the number of people who made donations by responding to an online request which can be an email or social media. From the figure, it is clear that people tend to positively respond to request in shopping centre while other ways of requests received the least number of donations. However, the number of donations does not necessarily mean more amount donated. 
 
-```{r numberdonations, fig.cap = "Distribution of the total number of financial donations in the past 12 months", echo = FALSE}
+```{r numberdonations, echo=FALSE, fig.cap = "Distribution of the total number of financial donations in the past 12 months"}
 # total number of financial donations
 # obtain the total number of financial donations from the raw dataset
 total_number_fin_donation <- raw_data %>% 
@@ -680,6 +680,10 @@ A "registered charity" refers to a charitable organization that is registered wi
 If a charity is registered, then the group can issue official donation receipts for income tax purposes to donors and is exempt from paying income tax (@registeredcharity). In addition, donors can receive income tax credits for the financial donations that they have made (@registeredcharity). Therefore, it is often the case where people decide to make donations for the income tax credit, which can be observed in Table \@ref(tab:reasonsforgiving). However, Table \@ref(tab:awareness) tells that most people do not know how to check whether a charity is registered under the Income Tax Act. Furthermore, a list of the registered charities can be viewed from the CRA website, but Table \@ref(tab:search) demonstrates that people do not consider consulting the CRA website before making a decision on where to make donations. Meanwhile, Table \@ref(tab:reasonsfornotgiving) tells that 33.07% of the respondents answered that tax credit is not incentive enough. This can be asked in the supplementary survey to figure out what changes can be made to let people be aware of the registered charity.
 
 Next, donors need to ensure that the charity is trustworthy. Most charities, especially when it is a good charity, openly share their information on how the donations are being used for its accountability and transparency (@charity). They post financial statements on their websites to ensure how the donations are being used (@CPA). However, Table \@ref(tab:awareness) indicates that most people do not monitor how charities use their donations. While 68.64% of the respondents answered that they do research about the charity before making donations, they do not keep a check on how their money is being used. When we invest in stocks or mutual funds, we keep checking their price so that we are not losing any money. This is the same for the donation. We should monitor the charity constantly to make sure that the money is not being wasted. 
+
+## Trend
+
+Figure \@fig(ref:donation) shows that 75.26% of the respondents have made the financial donation in the last 12 months. Among the 16,149 respondents, 3,995 people did not give money to the charitable or non-profit organizations, which constituted to a 24.74% of the respondents. Figure \@ref(fig:totalamount) shows that there are few who made a large amount of donations while most donors donated less than \$200. Similar distribution can be observed in Figure \@ref(fig:numberdonations) where it illustrates the distribution of the total number of financial donations made in the past 12 months. There were few people who made donations frequently while most donors made donations between less than 5 times. 
 
 ## Limitations and Weaknesses
 
