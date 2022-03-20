@@ -19,7 +19,6 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Introduction
 
-
 Charities form an important part of the Canadian social fabric. The charitable sector plays a crucial role in the Canadian economy, providing essential services to the vulnerable. The services provided by charities bring a multitude of societal benefits in diverse sectors. In Canada, there are about 86000 registered charities constituting the charitable sector which contributes to the Canadian economy, namely earned 312 billion dollars in revenues in 2018 [@canada]. However, charitable giving is no longer what it was in previous years. We are seeing a decline in charity giving; less Canadians are giving and those who give are giving less than they previously would [@cite] It is becoming a cause for concern since a large number of Canadians rely on the services provided by those charities to live.
 
 Statistics Canada has collected data on giving, volunteering and participating since 1997 at an interval of about 3 years. The General Social Survey on Giving, Volunteering and Participating (GSS GVP) collects data data through different questionnaires and the objective is to observe any changes in societal behaviour and pattern through analysis of the data collected, providing vital information to governmental bodies. Looking at the behavioral changes by comparing the different GSS GVP can give an idea of the condition of Canadian livelihood and well-being as well as how social trends changed or remained the same.
@@ -29,6 +28,7 @@ This paper focuses on the giving aspect of the 2018 GSS GVP. It gives a descript
 In this paper, we used the statistical software R [@citeR] and R packages tidyverse [@citetidyverse], janitor [@citejanitor], dplyr [@citedplyr], tidyr [@citetidyr], ggplot2 [@citeggplot2], knitr [@citeknitr] and kableExtra [@citekableExtra] to clean and analyze data.
 
 The rest of this paper will be as follows: Section \@ref(data) which explains how data was collected, the survey methodology and key features of the survey, Section \@ref(results) which conveys the findings along with the graphs and tables made, Section \@ref(discussion) which will explain some interesting points found and finally Section \@ref(appendix) which contains a supplementary survey which help to further investigate aspects not covered by the GSS GVP.
+
 
 # Data
 
@@ -641,7 +641,7 @@ donate_income_group %>%
 
 Table \@ref(tab:averagedonate) shows the mean of the total amount donated for each personal income group as well as its variability. We can note that in general, respondents in higher income group tends have donated more on average which is not surprising. We can also observed that the mean amount donated for the 75000 to 99999 and 100000 to 124999 income group do not differ by much ($63.19) but the variability is much larger which can explain why the difference is so small. There must be some respondents who donated much larger amount compared to what others in the same income group have donated.
 
-```{r, echo = FALSE}
+```{r ageamount, echo = FALSE}
 # age and donation relation
 donate_age_group <- raw_data %>% 
   select(agegr10, gs1datot) %>% 
@@ -685,7 +685,10 @@ Next, donors need to ensure that the charity is trustworthy. Most charities, esp
 
 Figure \@fig(ref:donation) shows that 75.26% of the respondents have made the financial donation in the last 12 months. Among the 16,149 respondents, 3,995 people did not give money to the charitable or non-profit organizations, which constituted to a 24.74% of the respondents. Figure \@ref(fig:totalamount) shows that there are few who made a large amount of donations while most donors donated less than \$200. Similar distribution can be observed in Figure \@ref(fig:numberdonations) where it illustrates the distribution of the total number of financial donations made in the past 12 months. There were few people who made donations frequently while most donors made donations between less than 5 times. 
 
-However, it is worth mentioning that the amount of donation that matters much, but the interest in helping others matters a lot as well.
+In Table \@ref(tab:averagedonate), we observed that the mean amount donated by the 100000 to 124999 income group does not differ much to the 75000 to 99999 income group. Also, if we look at the mean amount donated per income, we observed that it is the respondents in lower income brackets that donate a larger proportion of their income. Generally, we would expect higher income earners to afford making larger donations but the reality is different. If this trend continues, it would have large implications since payrolls increases every year and with more experience, people have more opportunities to get promotions and earn more. We would then expect a declining trend for the total amount donated annually.
+
+Additionally, from Table \@ref(tab:ageamount), we observe that the people in older age groups tend to give more on average. Respondents, having at least 75 years, are the ones giving the most on average. The younger population seems to be more reluctant to donate as much as their older counterpart. However, we need to consider other factors as well such as income, savings, spending, or future plans in context. The youngest age group (15 to 24) donated on average 204 dollars which is the lowest among all age groups. This expected since most people in that age group are still studying or just entered the job market, so would not be expected to earn a lot.
+
 
 ## Limitations and Weaknesses
 
