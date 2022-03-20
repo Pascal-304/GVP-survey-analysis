@@ -2,8 +2,6 @@
 library(janitor)
 library(tidyverse)
 
-readr::read_csv()
-
 # Load the data dictionary and the raw data and correct the variable names
 raw_data <- read_csv("gss2018_data.csv")
 dict <- read_lines("gss2018_dict.txt", skip = 18) # skip is because of preamble content
@@ -187,29 +185,13 @@ gss <- raw_data %>%
          ng_080,
          ng_090,
          ng_110,
-         ng_120a,
-         ng_120b,
-         ng_120c,
-         ng_120d,
          ng_130,
-         ng_140a, 
-         ng_140b,
-         ng_140c,
-         ng_140d,
-         ng_140e,
-         ng_140f,
          ng_150,
          ng_160,
          og_010,
          og_020,  
          og_030,
          og_040,
-         og_050a,
-         og_050b,
-         og_050c,
-         og_050ca,
-         og_050cb,
-         og_050d,
          rg_010,  
          rg_020,
          rg_030,
@@ -225,7 +207,6 @@ gss <- raw_data %>%
                                       filter(variable_name==deparse(substitute(.))) %>%
                                       select(cw_statement) %>%
                                       pull()))))
-# fg1dad, fg1dnd, gs1da, gs1dnx, 
 
 # Fix the names
 gss <- gss %>% 
@@ -357,29 +338,13 @@ gss <- gss %>%
          reas_not_giv_gave_direct_to_ppl = ng_080,
          reas_not_giv_tax_cred_not_incentive = ng_090,
          reas_not_giv_money_would_not_be_used_efficient = ng_110,
-         reas_not_giv_not_efficient_fundrais = ng_120a,
-         reas_not_giv_not_efficient_impact = ng_120b,
-         reas_not_giv_not_efficient_explanation = ng_120c,
-         reas_not_giv_not_efficient_other = ng_120d,
          reas_not_giv_not_like_way_requests = ng_130,
-         reas_not_giv_request_time_of_day = ng_140a, 
-         reas_not_giv_request_num = ng_140b,
-         reas_not_giv_request_tone = ng_140c,
-         reas_not_giv_request_multiple = ng_140d,
-         reas_not_giv_request_method = ng_140e,
-         reas_not_giv_request_other = ng_140f,
          reas_not_giv_so_many_org = ng_150,
          reas_not_giv_charity_fraud = ng_160,
          other_giv_food_bank = og_010,
          other_giv_cloth_toy_household = og_020,  
          other_giv_bequest_in_respond_will = og_030,
          other_giv_direct_to_ppl = og_040,
-         other_giv_dirct_stranger = og_050a,
-         other_giv_dirct_pers_crowdfunding = og_050b,
-         other_giv_dirct_fam_outside_household = og_050c,
-         other_giv_dirct_fam_outside_household_in_canada = og_050ca,
-         other_giv_dirct_fam_outside_household_out_canada = og_050cb,
-         other_giv_dirct_other = og_050d,
          reas_giv_pers_affected = rg_010,  
          reas_giv_tax_cred = rg_020,
          reas_giv_religious = rg_030,
