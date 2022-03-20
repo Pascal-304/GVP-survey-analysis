@@ -34,13 +34,23 @@ The rest of this paper will be as follows:
 
 ## Data Collection
 
-The data was obtained from Canadian 2018 General Social Survey (GSS) on Giving, Volunteering, and Participation (GVP). The survey was conducted by interviewing individuals 15 years of age or over in Canada's ten provinces excluding Yukon, Northwest Territories, and Nunavut. It was collected from September 4 to December 28, 2018 by Statistics Canada. Respondents were given two option to complete the questionnaire online and via the telephone. 
+The data was obtained from Canadian 2018 General Social Survey (GSS) on Giving, Volunteering, and Participation (GVP). The survey was conducted by interviewing individuals 15 years of age or over in Canada's ten provinces excluding Yukon, Northwest Territories, and Nunavut. It was collected from September 4th to December 28th, 2018 by Statistics Canada. Respondents were given two option to complete the questionnaire: first via the telephone and then online.
 
+The data collected is comprised of two components: core and classification content. Core contents are the data that quantifies changes in society related to standard of life and welfare and supplies data to inform certain policy issues. The GSS GVP survey asked questions like 'In the past 12 months, did you make a donation to a charitable or non-profit organization?' or 'What was the amount of the donation to the organization?'. Next, classification variables are used to help portray population groups for the use in the analysis of the core data. These include age, gender, marital status, income of the respondent, and etc.
 
-## Survey Methodology
+## Survey Frame
 
-How respondents were selected?
-It applied the age-order selection method. It is important to note that all respondents were not contacted the same way; some were contacted through mail, others by telephone.
+The survey frame was creating using two different components: list of telephone numbers in use available to Statistics Canada and the Address Register (AR). A list of telephone numbers included both landline and cellular numbers, and it was collected from various sources including telephone companies and census of population. The AR contained a list of all dwellings within the ten provinces, and it was used to group the telephone numbers associated with the same valid address. About 86% of the available telephone numbers could be linked to the AR, but the other 14% that could not be linked were included on the frame as well. 
+
+## Sampling Strategy
+
+The 2018 GSS GVP used geographic areas to divide the samples into strata. First, most Census Metropolitan Areas (CMAs) defined in 2011 Census geography were considered separate strata, and it formed fourteen strata. Then, the CMAs located in Quebec, Ontario, and British Columbia were each grouped to form three more strata. Lastly, the non-CMA areas of each of the ten provinces were grouped to form ten more strata. Therefore, there were 27 strata in total.
+
+Once every record in the survey frame was assigned to a stratum as explained, a simple random sample without replacement of records was used in selecting each stratum. The frame for GSS was created using several linked sources, such as the Census of population, administrative data files, and billing files. Households without telephones were excluded from the survey population. Survey estimates were weighted so that they represent all persons in the target population, including the ones excluded by the survey frame. 
+
+94.5% of the selected telephone numbers reached eligible households where eligible means a household includes at least one person 15 years of age or above. If the household did not meet the eligibility criteria, they were terminated after an initial set of questions that determined eligibility. Once the households were selected, a respondent from each household was selected using the age-order method to complete an electronic questionnaire or to respond to a telephone interview. The age distribution of survey respondents is shown in Figure \@ref(fig:age). 
+
+The target sample size for the 2018 GSS GVP was 20,000, and the actual number of respondents was 16,149. For each province, minimum sample sizes were determined beforehand to ensure that estimates have acceptable sampling variability at the stratum level. Once these stratum sample size targets had been met, the remaining sample was re-allocated to the strata to balance the need for precision of both national-level and stratum-level estimates. The overall response rate was 41.9%. 
 
 Changes to survey questionnaire
 content was updated from 2004 to 2018 using experience from prior surveys, notably clarity of questions and consultations with stakeholders from charity organizations. 
@@ -53,23 +63,6 @@ sample frame
 it has not been consistent over the years. In 2004, 2007 and 2010, random digit dialling was used. From 2013, the sample frame included "cell phone only" households, which is a population not covered by RDD. 
 
 Internet option - adapt to technology and demands on Canadians'time. - flexibility and convenience
-
-target population
-all persons who are at least 15 years old with the exceptions of residents of the Yukon, Northwest Territories and Nunavut as well as full-time residents of institutions
-
-proceeded with stratification
-stratification sampling with the provinces divided into strata and many of the Census Metropolitan Areas (CMA) considered as separate strata. totaling 27 stata
-
-frame
-2 parts - lists of telephone numbers in use (both landline and cellular) available to Statistics Canada
-- address register for mail code for online option
-
-for each stratum, a siimple random sample without replacement was selected.
-
-rejective sampling - 'rejecting' a portion of population with a given probability to allow more time and effort to be spent trying to find the population of interest, volunteers
-
-target sample size was 20000 but actual number is 16149
-minimum sample size for each stratum was determined beforehand to ensure acceptable sample variability
 
 majority of interviewers had previous experience with gss or csgvp
 
