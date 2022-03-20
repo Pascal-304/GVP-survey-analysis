@@ -121,6 +121,11 @@ gss<- read_csv('data1.csv', show_col_types = FALSE)
 raw_data <- read_csv('gssv.csv')
 ```
 
+# Data
+
+## Data Collection
+
+Data for 2018 General Social Survey on Giving, Volunteering, and Participation were collected by interviewing individuals 15 years of age or over in Canada's ten provinces excluding Yukon, Northwest Territories, and Nunavut. The full-residents of the institutions are excluded as well. It was collected from September 4 to December 28, 2018 by Statistics Canada. Respondents were given two option to complete the questionnaire online and via the telephone.
 
 ### Age
 
