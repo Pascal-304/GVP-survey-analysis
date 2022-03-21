@@ -682,3 +682,5 @@ knitr::include_graphics("QRtiger.png")
 
 
 \newpage
+
+# References
