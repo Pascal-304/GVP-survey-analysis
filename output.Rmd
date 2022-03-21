@@ -661,8 +661,47 @@ Our supplementary survey is available here: https://forms.gle/kyVHzr6SJmnyd2PC9
 
 QR code:
 
-## End page
+```{r, echo=FALSE, fig.cap="QR code", out.height='50%', out.width = '50%'}
+knitr::include_graphics("QRtiger.png")
+```
 
-Thank you very much for taking your time to participate in the survey. If you have any questions or want to reach out to us, you can contact us at pascal.leeslew\@mail.utoronto.ca or clara.park\@mail.utoronto.ca.
+
+\newpage
+
+```{r, echo=FALSE, fig.cap="Screenshot of survey questions 1", out.height='30%', out.width = '30%'}
+knitr::include_graphics("Survey_Screenshot_1.jpg")
+```
+
+```{r, echo=FALSE, fig.cap="Screenshot of survey questions 2", out.height='30%', out.width = '30%'}
+knitr::include_graphics("Survey_Screenshot_2.jpg")
+```
+
+```{r, echo=FALSE, fig.cap="Screenshot of survey questions 3", out.height='30%', out.width = '30%'}
+knitr::include_graphics("Survey_Screenshot_3.jpg")
+```
+
+```{r, echo=FALSE, fig.cap="Screenshot of survey questions 4", out.height='30%', out.width = '30%'}
+knitr::include_graphics("Survey_Screenshot_4.jpg")
+```
+
+```{r, echo=FALSE, fig.cap="Screenshot of survey questions 5", out.height='30%', out.width = '30%'}
+knitr::include_graphics("Survey_Screenshot_5.jpg")
+```
+
+```{r, echo=FALSE, fig.cap="Screenshot of survey questions 6", out.height='30%', out.width = '30%'}
+knitr::include_graphics("Survey_Screenshot_6.jpg")
+```
+
+```{r, echo=FALSE, fig.cap="Screenshot of survey questions 7", out.height='30%', out.width = '30%'}
+knitr::include_graphics("Survey_Screenshot_7.jpg")
+```
+
+```{r, echo=FALSE, fig.cap="Screenshot of survey questions 8", out.height='30%', out.width = '30%'}
+knitr::include_graphics("Survey_Screenshot_8.jpg")
+```
+
+```{r, echo=FALSE, fig.cap="Screenshot of survey questions 9", out.height='30%', out.width = '30%'}
+knitr::include_graphics("Survey_Screenshot_9.jpg")
+```
 
 \newpage
