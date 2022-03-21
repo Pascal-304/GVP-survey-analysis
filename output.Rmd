@@ -35,26 +35,26 @@ gss<-read_csv('gss2018.csv', show_col_types = FALSE)
 
 # Introduction
 
-Charities form an important part of the Canadian social fabric. The charitable sector plays a crucial role in the Canadian economy, providing essential services to the vulnerable. The services provided by charities bring a multitude of societal benefits in diverse sectors. In Canada, there are about 86000 registered charities constituting the charitable sector which contributes to the Canadian economy, namely earned 312 billion dollars in revenues in 2018 [@canada]. However, charitable giving is no longer what it was in previous years. We are seeing a decline in charity giving; less Canadians are giving and those who give are giving less than they previously would [@cite] It is becoming a cause for concern since a large number of Canadians rely on the services provided by those charities to live.
+Charities form an important part of the Canadian social fabric. The charitable sector plays a crucial role in the Canadian economy, providing essential services to the vulnerable. The services provided by charities bring a multitude of societal benefits in diverse sectors. In Canada, there are about 86,000 registered charities constituting the charitable sector which contributes to the Canadian economy, namely earned 312 billion dollars in revenues in 2018 [@canada]. However, charitable giving is no longer what it was in previous years. We are seeing a decline in charity giving; fewer Canadians are giving and those who give are giving less than they previously would [@cite] It is becoming a cause for concern since a large number of Canadians rely on the services provided by those charities to live.
 
-Statistics Canada has collected data on giving, volunteering and participating since 1997 at an interval of about 3 years. The General Social Survey on Giving, Volunteering and Participating (GSS GVP) collects data data through different questionnaires and the objective is to observe any changes in societal behaviour and pattern through analysis of the data collected, providing vital information to governmental bodies. Looking at the behavioral changes by comparing the different GSS GVP can give an idea of the condition of Canadian livelihood and well-being as well as how social trends changed or remained the same.
+Statistics Canada has collected data on giving, volunteering, and participating since 1997 at an interval of about 3 years. The General Social Survey on Giving, Volunteering, and Participating (GSS GVP) collects data through different questionnaires and the objective is to observe any changes in societal behaviour and pattern through analysis of the data collected, providing vital information to governmental bodies. Looking at the behavioral changes by comparing the different GSS GVP can give an idea of the condition of Canadian livelihood and well-being as well as how social trends changed or remained the same.
 
-This paper focuses on the giving aspect of the 2018 GSS GVP. It gives a descriptive analysis on giving behaviour of Canadians. We have looked at the reasons why Canadians donate, the decisions on giving and reasons for not giving more among other aspects to analyze the giving behaviour of Canadians and provide some insights that may help fundraisers in the future. We first took a look at the demographic and financial situation of the survey respondents. We found that respondents earning 100000 but less than 125000 did not donate as much given their income compared to other income groups. We also found that most respondents made between 1 to 5 donations in the past 12 months, indicating that they do not donate on a regular basis. Rather, they most likely will respond to different request methods by charities. 
+This paper focuses on the giving aspect of the 2018 GSS GVP. It gives descriptive analysis on giving behavior of Canadians. We have looked at the reasons why Canadians donate, the decisions on giving, and reasons for not giving more among other aspects to analyze the giving behavior of Canadians and provide some insights that may help fundraisers in the future. We first took a look at the demographic and financial situation of the survey respondents. We found that respondents earning 100000 but less than 125000 did not donate as much given their income compared to other income groups. We also found that most respondents made between 1 to 5 donations in the past 12 months, indicating that they do not donate on a regular basis. Rather, they most likely will respond to different request methods by charities. 
 
-The rest of this paper will be as follows: Section \@ref(data) which explains how data was collected, the survey methodology and key features of the survey, Section \@ref(results) which conveys the findings along with the graphs and tables made, Section \@ref(discussion) which will explain some interesting points found and finally Section \@ref(appendix) which contains a supplementary survey which help to further investigate aspects not covered by the GSS GVP.
+The rest of this paper will be as follows: Section \@ref(data) which explains how data was collected, the survey methodology and key features of the survey, Section \@ref(results) which conveys the findings along with the graphs and tables made, Section \@ref(discussion) which will explain some interesting points found and finally Section \@ref(appendix) which contains a supplementary survey which helps to further investigate aspects not covered by the GSS on GVP.
 
 
 # Data
 
 ## Data Collection
 
-The data was obtained from Canadian 2018 General Social Survey (GSS) on Giving, Volunteering, and Participation (GVP). The survey was conducted by interviewing individuals 15 years of age or over in Canada's ten provinces excluding Yukon, Northwest Territories, and Nunavut. It was collected from September 4th to December 28th, 2018 by Statistics Canada. Respondents were given two option to complete the questionnaire: first via the telephone and then online.
+The data was obtained from the Canadian 2018 General Social Survey (GSS) on Giving, Volunteering, and Participation (GVP). The survey was conducted by interviewing individuals 15 years of age or over in Canada's ten provinces excluding Yukon, Northwest Territories, and Nunavut. It was collected from September 4th to December 28th, 2018 by Statistics Canada. Respondents were given two options to complete the questionnaire: first via the telephone and then online.
 
-The data collected is comprised of two components: core and classification content. Core contents are the data that quantifies changes in society related to standard of life and welfare and supplies data to inform certain policy issues. The GSS on GVP survey asked questions like 'In the past 12 months, did you make a donation to a charitable or non-profit organization?' or 'What was the amount of the donation to the organization?'. Next, classification variables are used to help portray population groups for the use in the analysis of the core data. These include age, gender, marital status, income of the respondent, and etc.
+The data collected consists of two components: core and classification content. Core contents are the data that quantifies changes in society related to the standard of life and welfare and supplies data to inform certain policy issues. The GSS on GVP survey asked questions like 'In the past 12 months, did you make a donation to a charitable or non-profit organization?' or 'What was the amount of the donation to the organization?'. Next, classification variables are used to help portray population groups for use in the analysis of the core data. These include age, gender, marital status, the income of the respondent, etc.
 
 ## Survey Frame
 
-The survey frame was creating using two different components: list of telephone numbers in use available to Statistics Canada and the Address Register (AR). A list of telephone numbers included both landline and cellular numbers, and it was collected from various sources including telephone companies and census of population. The AR contained a list of all dwellings within the ten provinces, and it was used to group the telephone numbers associated with the same valid address. About 86% of the available telephone numbers could be linked to the AR, but the other 14% that could not be linked were included on the frame as well. 
+The survey frame was created using two different components: a list of telephone numbers in use available to Statistics Canada and the Address Register (AR). A list of telephone numbers included both landline and cellular numbers, and it was collected from various sources including telephone companies and census of population. The AR contained a list of all dwellings within the ten provinces, and it was used to group the telephone numbers associated with the same valid address. About 86% of the available telephone numbers could be linked to the AR, but the other 14% that could not be linked were included on the frame as well. 
 
 ## Sampling Strategy
 
@@ -105,7 +105,7 @@ age %>%
 
 ## Key features
 
-The raw data includes 956 variables which were derived from the questionnaire. As mentioned in the above, some key features include classification variables including age, sex, marital status, income, and core contents such as financial giving, the total amount of donations, and etc. The dataset is processed and analyzed using 'R' [@citeR] mainly with the 'tidyverse' [@citetidyverse] and 'dplyr' [@citedplyr] packages. The package 'janitor' [@citejanitor] is used to clean data, and the graphs and the tables are created in 'ggplot2' [@citeggplot2] and 'kableExtra' [@citekableExtra], respectively. The package 'stringr' [@citestringr] is used to manipulate the character string. The packages 'bookdown' [@citebookdown] and 'knitr' [@citeknitr] are used in generating the R Markdown report. Table \@reg(tab:data) created using 'kableExtra' [@citekableExtra] shows a subset of key features that will be discussed in this paper.
+The raw data includes 956 variables that were derived from the questionnaire. As mentioned above, some key features include classification variables including age, sex, marital status, income, and core contents such as financial giving, the total amount of donations, etc. The dataset is processed and analyzed using 'R' [@citeR] mainly with the 'tidyverse' [@citetidyverse] and 'dplyr' [@citedplyr] packages. The package 'janitor' [@citejanitor] is used to clean data, and the graphs and the tables are created in 'ggplot2' [@citeggplot2] and 'kableExtra' [@citekableExtra], respectively. The package 'stringr' [@citestringr] is used to manipulate the character string. The packages 'bookdown' [@citebookdown] and 'knitr' [@citeknitr] are used in generating the R Markdown report. Table \@reg(tab:data) created using 'kableExtra' [@citekableExtra] shows a subset of key features that will be discussed in this paper.
 
 ```{r data, echo=FALSE}
 gss %>%
@@ -160,7 +160,7 @@ income %>%
              scales = "free")
 ```
 
-Marital status is important in tracking the evolution of social attitudes. Figure \@ref(fig:maritalstatus) indicates that the most common family structure in Canada is married couples. When the marital status is combined with the family income, it can be used to indicate the socio-economic status of various types of families. Figure \@ref(fig:maritalandincome) tells that the distribution of the family income quintile is similar between the married couples and the common-law couples, and the remaining tends to have the similar distribution.
+Marital status is important in tracking the evolution of social attitudes. Figure \@ref(fig:maritalstatus) indicates that the most common family structure in Canada is married couples. When the marital status is combined with the family income, it can be used to indicate the socio-economic status of various types of families. Figure \@ref(fig:maritalandincome) tells that the distribution of the family income quintile is similar between the married couples and the common-law couples, and the remaining tends to have a similar distribution.
 
 # Result
 
@@ -221,7 +221,7 @@ df_awareness %>%
   kable_styling()
 ```
 
-Table \@ref(tab:awareness) demonstrates that people are unaware of the charitable organizations. It can first observed that most people do not know how to check if a charity is registered in Canada. Next, most charities openly share their information on how the donations are being used for its accountability and transparency (@charity). However, we can tell that people do not monitor how charities use their donations.
+Table \@ref(tab:awareness) demonstrates that people are unaware of charitable organizations. It can be first observed that most people do not know how to check if a charity is registered in Canada. Next, most charities openly share their information on how the donations are being used for its accountability and transparency (@charity). However, we can tell that people do not monitor how charities use their donations.
 
 ## How to decide where to donate 
 
@@ -246,7 +246,7 @@ dg %>%
   scale_x_discrete(labels = function(x) str_wrap(x, width = 10))
 ```
 
-Next, we observed whether people do a research on the organizations before making donations, and if they do, what methods are being used to search for the charity. Figure \@ref(fig:dgsearch) shows that if the respondent have considered making donations, then they usually search for information on the charity before giving. 
+Next, we observed whether people do research on the organizations before making donations, and if they do, what methods are being used to search for the charity. Figure \@ref(fig:dgsearch) shows that if the respondent has considered making donations, then they usually search for information on the charity before giving. 
 
 ```{r search, echo=FALSE}
 dg_search_detail <-
@@ -298,7 +298,7 @@ dg_search_df %>%
   kable_styling()
 ```
 
-Among those who search before they donate to a charity, Table \@ref(tab:search) shows that people are mostly likely to read information provided by the charity and do a general online search. It should be noted that even though the list of the registered charitities can be viewed from the CRA website, people did not consider consulting the CRA website before making donations. 
+Among those who search before they donate to a charity, Table \@ref(tab:search) shows that people are most likely to read the information provided by the charity and do a general online search. It should be noted that even though the list of the registered charities can be viewed from the CRA website, people did not consider consulting the CRA website before making donations. 
 
 ## Reasons for giving
 
@@ -346,7 +346,7 @@ rg %>%
   kable_styling()
 ```
 
-Table \@ref(tab:reasonsforgiving) demonstrates the reasons for giving. Note that only the respondents who have made the donations in the past 12 months answered this questionnaire. Table \@ref(tab:reasonsforgiving) indicates that it varies for each people why they decide to make donations. Although it turned out to be approximately equal among every reason listed in the survey, the top 2 were spiritual beliefs and religious reasons, which imply that one's faith is one of the biggest reasons why people decide to give money to the charity.
+Table \@ref(tab:reasonsforgiving) demonstrates the reasons for giving. Note that only the respondents who have made the donations in the past 12 months answered this questionnaire. Table \@ref(tab:reasonsforgiving) indicates that it varies for each people why they decide to make donations. Although it turned out to be approximately equal among every reason listed in the survey, the top 2 were spiritual beliefs and religious reasons, which imply that one's faith is one of the biggest reasons why people decide to give money to charity.
 
 ## Reasons for not giving (more)
 
@@ -406,8 +406,9 @@ ng %>%
   kable_styling()
 ```
 
-Next, we observed for the reasons for not giving. If the respondents have made the donations in the past 12 months, then it asked for the reasons why they did not donate more. Table \@ref(tab:reasonsfornotgiving) demonstrates that among the respondents who have donated in the past 12 months, 31.17% of them think that they have already donated enough. 
-When the respondents did not donate in the past 12 months, it asked for the reasons for not giving. Table \@ref(tab:reasonsfornotgiving) shows that 42.57% of the respondents decided to volunteer instead of giving. 42.41% of the respondents answered that they did not like the way they were being requested. Additionally, it is worth mentioning that although there are so many organizations, it was not the main reason why people decided not to give money. It was that they did not know where to make donations among those organizations, and they were afraid that money would not be used efficient. Furthermore, 42.32% of the respondents said that they gave money directly to people who were in need of financial assistance.
+Next, we observed the reasons for not giving. If the respondents have made the donations in the past 12 months, then it asked for the reasons why they did not donate more. Table \@ref(tab:reasonsfornotgiving) demonstrates that among the respondents who have donated in the past 12 months, 31.17% of them think that they have already donated enough. 
+
+When the respondents did not donate in the past 12 months, it asked for the reasons for not giving. Table \@ref(tab:reasonsfornotgiving) shows that 42.57% of the respondents decided to volunteer instead of giving. 42.41% of the respondents answered that they did not like the way they were being requested. Additionally, it is worth mentioning that although there are so many organizations, it was not the main reason why people decided not to give money. It was that they did not know where to make donations among those organizations, and they were afraid that money would not be used efficiently. Furthermore, 42.32% of the respondents said that they gave money directly to people who were in need of financial assistance.
 
 ## Other givings
 
@@ -450,7 +451,7 @@ og %>%
   kable_styling()
 ```
 
-Lastly, we observed the other givings they have made besides financial donations to the charity. It can be observed from Table \@ref(tab:othergiving) that 7% of the respondents have donated food to the organizations such as food bank, and 6.72% donated clothings, toys, or household goods. In addition, 6.64% have made other givings directly to the ones who were in need of help. 6.90% made a donation to a charity in their will or through another financial product such as insurance. However, we can see that people mostly make the financial donations to the charitable or non-profitable organizations.
+Lastly, we observed the other givings they have made besides financial donations to charity. It can be observed from Table \@ref(tab:othergiving) that 7% of the respondents have donated food to the organizations such as food banks, and 6.72% donated clothes, toys, or household goods. In addition, 6.64% have made other givings directly to the ones who were in need of help. 6.90% made a donation to a charity in their will or through another financial product such as insurance. However, we can see that people mostly make financial donations to charitable or non-profitable organizations.
 
 ## Method to make financial donations
 
@@ -492,7 +493,7 @@ graph_1 <-
   theme(legend.position = "bottom")
 ```
 
-Figure \@ref(fig:donationresponse) shows the number of responses of the different methods to make financial donations. For example, online indicates the number of respondents who made donations by responding to an online request which can be an email or social media. From the figure, it is clear that people tend to positively respond to request in shopping centre while other ways of requests received the least number of donations. However, the number of donations does not necessarily mean that more amount was donated.
+Figure \@ref(tab:donationresponse) shows the number of responses of the different methods to make financial donations. For example, online indicates the number of respondents who made donations by responding to an online request which can be an email or social media. From the figure, it is clear that people tend to positively respond to requests in a shopping centre while other ways of requests received the least number of donations. However, the number of donations does not necessarily mean that more amount was donated.
 
 ## Total number donated
 
@@ -526,7 +527,7 @@ clean_total_fin_donation_1 %>%
   theme_minimal()
 ```
 
-Figure \@ref(fig:numberdonations) shows the distribution of the number financial donations made by the survey respondents in the past 12 months. It is important to note that out of the 16,149 respondents, 3,995 people skipped the question (i.e. 3,995 people did not make any financial donation to the charity in the last 12 months), and this number was removed before making the graph. The highest number of financial donations made was 72 whereas most of the other respondents made between 1 and 5 donations in the last 12 months.
+Figure \@ref(fig:numberdonations) shows the distribution of the number of financial donations made by the survey respondents in the past 12 months. It is important to note that out of the 16,149 respondents, 3,995 people skipped the question (i.e. 3,995 people did not make any financial donation to the charity in the last 12 months), and this number was removed before making the graph. The highest number of financial donations made was 72 whereas most of the other respondents made between 1 and 5 donations in the last 12 months.
 
 ## Total amount donated
 
@@ -559,7 +560,7 @@ g <-total_amount_1 %>%
   filter(total > 20000)
 ```
 
-Figure \@ref(fig:totalamount) illustrates how the amount of donations are distributed where \$0.50 is the the least amount donated and $60,000 is the largest amount donated in the past 12 months. 3,995 respondents chose to skip this question. A total of 9.3 million dollars have been donated by the 12,154 Canadian respondents. From Figure \@ref(fig:totalamount), most respondents donated amounts less than \$200 while 28 out of the 12,154 respondents donated more than \$20,000.
+Figure \@ref(fig:totalamount) illustrates how the amount of donations is distributed where \$0.50 is the least amount donated and $60,000 is the largest amount donated in the past 12 months. 3,995 respondents chose to skip this question. A total of 9.3 million dollars have been donated by the 12,154 Canadian respondents. From Figure \@ref(fig:totalamount), most respondents donated amounts less than \$200 while 28 out of the 12,154 respondents donated more than \$20,000.
 
 
 ```{r income, echo = FALSE, fig.cap = "Comparing the number of respondents in the different income groups"}
@@ -596,7 +597,7 @@ income_group %>%
   coord_flip()
 ```
 
-Figure \@ref(fig:income) shows the distribution of personal income groups of the survey respondents. The data was obtained using the CRA income tax filing in 2017. We can see that most respondents were from low to middle income background. The highest proportion of respondents were found in the \$25,000 to \$49,999 income group (29.95%) and 78.23% of the respondents earned less than $75,000 annually before taxes.
+Figure \@ref(fig:income) shows the distribution of personal income groups of the survey respondents. The data was obtained using the CRA income tax filing in 2017. We can see that most respondents were from low to middle-income backgrounds. The highest proportion of respondents was found in the \$25,000 to \$49,999 income group (29.95%) and 78.23% of the respondents earned less than $75,000 annually before taxes.
 
 ```{r averagedonate, echo=FALSE}
 # age income 
@@ -613,7 +614,7 @@ income_group %>%
         align = c("c", "c", "c"))
 ```
 
-Table \@ref(tab:averagedonate) shows the mean of the total amount donated for each personal income group as well as its variability. We can note that in general, respondents in higher income group tends have donated more on average which is not surprising. We can also observed that the mean amount donated for the \$75,000 to \$99,999 and \$100,000 to \$124,999 income group do not differ by much ($63.19) but the variability is much larger which can explain why the difference is so small. There must be some respondents who donated much larger amount compared to what others in the same income group have donated.
+Table \@ref(tab:averagedonate) shows the mean of the total amount donated for each personal income group as well as its variability. We can note that in general, respondents in higher income group tends to have donated more on average which is not surprising. We can also observe that the mean amount donated for the \$75,000 to \$99,999 and \$100,000 to \$124,999 income group do not differ by much ($63.19) but the variability is much larger which can explain why the difference is so small. There must be some respondents who donated much larger amounts compared to what others in the same income group have donated.
 
 \newpage
 
@@ -629,11 +630,11 @@ Next, donors need to ensure that the charity is trustworthy. Most charities, esp
 
 ## Trend
 
-Figure \@fig(ref:donation) shows that 75.26% of the respondents have made a financial donation in the last 12 months. Among the 16,149 respondents, 3,995 people did not give money to charitable or non-profit organizations, which constituted to a 24.74% of the respondents. Figure \@ref(fig:totalamount) shows that there are few who made a large amount of donations while most donors donated less than \$200. Similar distribution can be observed in Figure \@ref(fig:numberdonations) which illustrates the distribution of the total number of financial donations made in the past 12 months. There were few people who made donations frequently while most donors made donations between less than 5 times. 
+Figure \@fig(ref:donation) shows that 75.26% of the respondents have made a financial donation in the last 12 months. Among the 16,149 respondents, 3,995 people did not give money to charitable or non-profit organizations, which constituted a 24.74% of the respondents. Figure \@ref(fig:totalamount) shows that there are few who made a large amount of donations while most donors donated less than \$200. Similar distribution can be observed in Figure \@ref(fig:numberdonations) which illustrates the distribution of the total number of financial donations made in the past 12 months. There were few people who made donations frequently while most donors made donations between less than 5 times. 
 
-In Table \@ref(tab:averagedonate), we observed that the mean amount donated by the \$100,000 to $124,999 income group does not differ much to the \$75,000 to \$99,999 income group. Also, if we look at the mean amount donated per income, we observed that it is the respondents in lower income brackets that donate a larger proportion of their income. Generally, we would expect higher income earners to afford making larger donations but the reality is different. If this trend continues, it would have large implications since payrolls increases every year and with more experience, people have more opportunities to get promotions and earn more. We would then expect a declining trend for the total amount donated annually.
+In Table \@ref(tab:averagedonate), we observed that the mean amount donated by the \$100,000 to $124,999 income group does not differ much from the \$75,000 to \$99,999 income group. Also, if we look at the mean amount donated per income, we observed that it is the respondents in lower-income brackets that donate a larger proportion of their income. Generally, we would expect higher-income earners to afford to make larger donations but the reality is different. If this trend continues, it would have large implications since payrolls increases every year and with more experience, people have more opportunities to get promotions and earn more. We would then expect a declining trend for the total amount donated annually.
 
-Additionally, from Table \@ref(tab:ageamount), we observe that the people in older age groups tend to give more on average. Respondents, having at least 75 years, are the ones giving the most on average. The younger population seems to be more reluctant to donate as much as their older counterpart. However, we need to consider other factors as well such as income, savings, spending, or future plans in context. The youngest age group (15 to 24) donated on average \$204 which is the lowest among all age groups. This expected since most people in that age group are still studying or just entered the job market, so would not be expected to earn a lot.
+Additionally, from Table \@ref(tab:ageamount), we observe that the people in older age groups tend to give more on average. Respondents, having at least 75 years, are the ones giving the most on average. The younger population seems to be more reluctant to donate as much as their older counterpart. However, we need to consider other factors as well such as income, savings, spending, or future plans in context. The youngest age group (15 to 24) donated on average \$204 which is the lowest among all age groups. This was expected since most people in that age group are still studying or just entered the job market, so would not be expected to earn a lot.
 
 
 
@@ -641,17 +642,17 @@ Additionally, from Table \@ref(tab:ageamount), we observe that the people in old
 
 First of all, households without telephones were excluded from the survey population. It was the seventh time that the GVP was run, and in the previous GVP surveys, only paper questionnaires and telephone were used to collect data. However, in the survey conducted in 2018, a paper questionnaire was replaced by an online. As it was the first time that the online questionnaire is being used, a pilot test was conducted from February 19th to March 30th, 2018. Since the paper option is no longer available, it was crucial to include the "cell phone only" households to cover more Canadian population. However, the survey missed the households without the Internet and cell phone, and this population is harder to reach. Since most people have access to thhe Internet and have their own cell phones, we can assume that they are the ones who are likely in need of financial help. This might have changed our result in Table \@ref(tab:reasonsfornotgiving), which is about the reasons for not giving. 
 
-Second, the 2018 GSS on GVP cannot be compared with the previous GSS on GVP surveys for the several reasons. Core contents quantify changes in society and supplies data to inform specific policy issues. However, core content of the survey was updated from 2004 to 2018 using experience from prior surveys to clarify the questions and comply with the consultations with stakeholders from charitable sector, government and academic communities. In addition, the sample frame has not been consistent over the years. Prior to 2013, the random digit dialing (RDD) frame was used whereas starting 2013, the survey was implemented using the new GSS frame, which is explained in the Section 2.2 above. This new frame includes "cell phone only" households, which is a population not covered by the RDD. On top of it, as mentioned in the previous paragraph, the 2018 GSS on GVP was the first time offering an Internet option to complete the survey. There are reasons to believe that the use of an electronic questionnaire had an impact on the estimations, so it is not appropriate to compare results with the previous iterations. 
+Second, the 2018 GSS on GVP cannot be compared with the previous GSS on GVP surveys for several reasons. Core contents quantify changes in society and supplies data to inform specific policy issues. However, the core content of the survey was updated from 2004 to 2018 using experience from prior surveys to clarify the questions and comply with the consultations with stakeholders from the charitable sector, government, and academic communities. In addition, the sample frame has not been consistent over the years. Prior to 2013, the random digit dialing (RDD) frame was used whereas starting in 2013, the survey was implemented using the new GSS frame, which is explained in Section \@ref(data) above. This new frame includes "cell phone only" households, which is a population not covered by the RDD. On top of it, as mentioned in the previous paragraph, the 2018 GSS on GVP was the first time offering an Internet option to complete the survey. There are reasons to believe that the use of an electronic questionnaire had an impact on the estimations, so it is not appropriate to compare results with the previous iterations. 
 
 Third, this survey covers a wide range of giving with detailed questions. However, it is too detailed at the same point that it ended up containing so many questionnaires in the survey. Therefore, there are so many missing values in many variables. This can be observed in multiple figures and tables in the paper. For example, in Table \@ref(tab:reasonsfornotgiving), most entries have more than half of the missing values. Also, as there were so many questions in the survey, it is probable that the respondents did not spend enough time completing the questionnaires, especially if it was conducted online. For example, in Table \@ref(tab:reasonsforgiving) and Table \@ref(tab:reasonsfornotgiving), we can observe that the proportion of the respondents who answered yes is similar among most of the items. Since these questions were asked one after another, it might be the case that the respondents did not read the questions thoroughly before answering them. 
 
-Lastly, the survey was conducted from September to December in 2018. It asked for the financial donation given to a charitable or other non-profit organization during the 12-month reference period preceding the survey. Since every respondent completed the questionnaire at a different time, it is hard to define the exact time frame that was used in collecting the data. It would have been better if the period was specified such as the donations made during the period of January 1st to December 31st in 2017. In addition, even though the respondents are most likely to answer the questionnaires based on their donation history in 2018, there are several questions which asked on an annual basis. For example, the data for personal income was obtained using the CRA income tax filing in 2017. Thus, the time period does not match among the questions.
+Lastly, the survey was conducted from September to December 2018. It asked for the financial donation given to a charitable or other non-profit organization during the 12-month reference period preceding the survey. Since every respondent completed the questionnaire at a different time, it is hard to define the exact time frame that was used in collecting the data. It would have been better if the period was specified such as the donations made during the period of January 1st to December 31st in 2017. In addition, even though the respondents are most likely to answer the questionnaires based on their donation history in 2018, there are several questions which asked on an annual basis. For example, the data for personal income was obtained using the CRA income tax filing in 2017. Thus, the time period does not match among the questions.
 
 ## Bias and Ethical concerns
 
 This data is about people, so it is likely to have bias and ethical considerations involved. The GSS on GVP asks for voluntary participation. The interviewer first informed the participants about the survey and the importance and implications of conducting the survey and encourage participation instead of forcing people to participate. The participants can keep their anonymity without the fear of their private information being divulged. Statistics Canada made sure the participants have their responses confidential.
 
-One problem with the dataset and questionnaire is that there are only 2 categories for gender: male and female, which creates a gender bias. The survey questionnaire failed to account for other gender. The very fact that we want to classify people into groups is likely to create bias. However, it is still important to obtain gender data, so an alternative would be including more options such as transgender, non-binary and other with the option to specify if they would like to. Another ethical concern is the fact that Statistics Canada obtained data from other sources such as the CRA tax filing data. It is not mentioned if the respondents were made aware that their tax filing information were used in this survey. 
+One problem with the dataset and questionnaire is that there are only 2 categories for gender: male and female, which creates a gender bias. The survey questionnaire failed to account for another gender. The very fact that we want to classify people into groups is likely to create bias. However, it is still important to obtain gender data, so an alternative would be including more options such as transgender, non-binary, and others with the option to specify if they would like to. Another ethical concern is the fact that Statistics Canada obtained data from other sources such as the CRA tax filing data. It is not mentioned if the respondents were made aware that their tax filing information was used in this survey. 
 
 # Appendix
 
@@ -668,40 +669,12 @@ knitr::include_graphics("QRtiger.png")
 
 \newpage
 
-```{r, echo=FALSE, fig.cap="Screenshot of survey questions 1", out.height='30%', out.width = '30%'}
-knitr::include_graphics("Survey_Screenshot_1.jpg")
-```
 
-```{r, echo=FALSE, fig.cap="Screenshot of survey questions 2", out.height='30%', out.width = '30%'}
-knitr::include_graphics("Survey_Screenshot_2.jpg")
-```
+![](Survey_Screenshot_1.jpg){width='33%'} ![](Survey_Screenshot_2.jpg){width='33%'}
+![](Survey_Screenshot_3.jpg){width='33%'} ![](Survey_Screenshot_4.jpg){width='33%'}
+![](Survey_Screenshot_5.jpg){width='33%'} ![](Survey_Screenshot_6.jpg){width='33%'}
+![](Survey_Screenshot_7.jpg){width='33%'} ![](Survey_Screenshot_8.jpg){width='33%'}
+![](Survey_Screenshot_9.jpg){width='33%'} 
 
-```{r, echo=FALSE, fig.cap="Screenshot of survey questions 3", out.height='30%', out.width = '30%'}
-knitr::include_graphics("Survey_Screenshot_3.jpg")
-```
-
-```{r, echo=FALSE, fig.cap="Screenshot of survey questions 4", out.height='30%', out.width = '30%'}
-knitr::include_graphics("Survey_Screenshot_4.jpg")
-```
-
-```{r, echo=FALSE, fig.cap="Screenshot of survey questions 5", out.height='30%', out.width = '30%'}
-knitr::include_graphics("Survey_Screenshot_5.jpg")
-```
-
-```{r, echo=FALSE, fig.cap="Screenshot of survey questions 6", out.height='30%', out.width = '30%'}
-knitr::include_graphics("Survey_Screenshot_6.jpg")
-```
-
-```{r, echo=FALSE, fig.cap="Screenshot of survey questions 7", out.height='30%', out.width = '30%'}
-knitr::include_graphics("Survey_Screenshot_7.jpg")
-```
-
-```{r, echo=FALSE, fig.cap="Screenshot of survey questions 8", out.height='30%', out.width = '30%'}
-knitr::include_graphics("Survey_Screenshot_8.jpg")
-```
-
-```{r, echo=FALSE, fig.cap="Screenshot of survey questions 9", out.height='30%', out.width = '30%'}
-knitr::include_graphics("Survey_Screenshot_9.jpg")
-```
 
 \newpage
